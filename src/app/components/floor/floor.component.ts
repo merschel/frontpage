@@ -11,7 +11,7 @@ import { SettingsStorageService } from 'src/app/services/settings-storage.servic
 export class FloorComponent implements OnInit {
 
   constructor( public settingsStorage: SettingsStorageService,
-               private tileStorageService: TileStorageService ) {}
+               public tileStorageService: TileStorageService ) {}
 
   ngOnInit() {}
 

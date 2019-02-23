@@ -1,3 +1,7 @@
-<p>
-  tile works!
-</p>
+<div *ngIf = "tile.isNew; else showContent">
+  +
+</div>
+
+<ng-template #showContent>
+  {{tile.text}}
+</ng-template>

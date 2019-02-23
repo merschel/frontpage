@@ -11,7 +11,7 @@ export class SettingsStorageService {
 
   constructor() {
 
-    this.mSettings = new BehaviorSubject(this.defaultSettings())
+    this.mSettings = new BehaviorSubject(this.default())
 
     this.load().then( settings => {
 
@@ -63,7 +63,7 @@ export class SettingsStorageService {
 
   }
 
-  defaultSettings(): Settings {
+  default(): Settings {
     return {numberOfTileColumns : 1}
   }
 
