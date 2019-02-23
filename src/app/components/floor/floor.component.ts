@@ -1,7 +1,7 @@
-import { Settings } from './../../model/settings';
-import { TileStorageService } from './../../services/tile-storage.service';
-import { Component, OnInit } from '@angular/core';
-import { SettingsStorageService } from 'src/app/services/settings-storage.service';
+import { Settings } from './../../model/settings'
+import { TileStorageService } from './../../services/tile-storage.service'
+import { Component, OnInit } from '@angular/core'
+import { SettingsStorageService } from 'src/app/services/settings-storage.service'
 
 @Component({
   selector: 'app-floor',

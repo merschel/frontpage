@@ -1,7 +1,7 @@
-import { Settings } from './../../model/settings';
-import { SettingsStorageService } from 'src/app/services/settings-storage.service';
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+
+import { SettingsStorageService } from 'src/app/services/settings-storage.service'
+import { Component, OnInit } from '@angular/core'
+
 
 @Component({
   selector: 'app-settings',
@@ -15,7 +15,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {}
 
   setNumberOfTileColumns(newValue) {
-    this.settingsStorage.setNumberOfTileColumnsTo(newValue);
+    this.settingsStorage.setNumberOfTileColumnsTo(newValue)
   }
 
 }

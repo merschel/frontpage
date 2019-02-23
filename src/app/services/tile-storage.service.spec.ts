@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { TileStorageService } from './tile-storage.service';
+import { TileStorageService } from './tile-storage.service'
 
 describe('TileStorageService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({}))
 
   it('should be created', () => {
-    const service: TileStorageService = TestBed.get(TileStorageService);
-    expect(service).toBeTruthy();
-  });
-});
+    const service: TileStorageService = TestBed.get(TileStorageService)
+    expect(service).toBeTruthy()
+  })
+})
