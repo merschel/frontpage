@@ -1,0 +1,6 @@
+
+<div *ngIf="settingsStorage.settings | async as settings">
+  <mat-form-field>
+    <input matInput placeholder="Anzahl an Spalten" [ngModel]="settings.numberOfTileColumns" (ngModelChange) = "setNumberOfTileColumns($event)">
+  </mat-form-field>
+</div>
