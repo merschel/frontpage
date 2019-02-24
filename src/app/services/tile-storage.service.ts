@@ -70,12 +70,7 @@ export class TileStorageService {
   }
 
   default(): Tile[] {
-    // return [ { position: 1, url: '', text: 'Hinzufügen', isAddTile: true } ]
-    return [ { url: '', text: '1', isAddTile: false },
-    { url: '', text: '2', isAddTile: false } ,
-    { url: '', text: '3', isAddTile: false } ,
-    { url: '', text: 'Hinzufügen', isAddTile: true }  ]
-
+     return [ { url: '', text: 'Hinzufügen', isAddTile: true } ]
   }
 
 }

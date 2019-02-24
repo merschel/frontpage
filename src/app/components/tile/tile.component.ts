@@ -1,6 +1,8 @@
-import { TileStorageService } from './../../services/tile-storage.service';
+import { TileStorageService } from './../../services/tile-storage.service'
 import { Component, OnInit, Input } from '@angular/core'
 import { Tile } from '../../model/tile'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { TileDialogComponent } from '../tile-dialog/tile-dialog.component';
 
 @Component({
   selector: 'app-tile',
@@ -11,7 +13,10 @@ export class TileComponent implements OnInit {
 
   @Input() tile: Tile
 
-  constructor(private tileStorageService: TileStorageService) { }
+  constructor(private tileStorageService: TileStorageService,
+              public dialog: MatDialog ) {
+
+  }
 
   ngOnInit() {
 
@@ -21,7 +26,13 @@ export class TileComponent implements OnInit {
 
     let tile: Tile = { url: '', text: '9' }
 
-    this.tileStorageService.addNew(tile)
+    const dialogRef = this.dialog.open( TileDialogComponent, { width: '300px', data: tile } )
+
+    dialogRef.afterClosed().subscribe( result => {
+      this.tileStorageService.addNew(tile)
+    })
+
+
 
   }
 

@@ -1,3 +1,3 @@
 export interface Settings {
-  numberOfTileColumns: number;
+  numberOfTileColumns: number
 }

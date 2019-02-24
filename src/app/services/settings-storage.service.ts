@@ -51,7 +51,7 @@ export class SettingsStorageService {
 
     return new Promise( (resolve, reject) => {
 
-      const settings: Settings = { numberOfTileColumns: 3 }
+      const settings: Settings = { numberOfTileColumns: 5 }
 
       if ( settings ) {
         resolve(settings)
@@ -64,7 +64,7 @@ export class SettingsStorageService {
   }
 
   default(): Settings {
-    return {numberOfTileColumns : 1}
+    return {numberOfTileColumns : 5}
   }
 
 }
