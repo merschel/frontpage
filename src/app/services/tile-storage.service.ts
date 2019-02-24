@@ -27,9 +27,11 @@ export class TileStorageService {
 
   addNew(tile: Tile) {
 
+    tile.isAddTile = false
+
     const tiles = this.mTiles.value
 
-    tiles.push(tile)
+    tiles.splice( tiles.length - 1, 0, tile )
 
     this.mTiles.next(tiles)
 
@@ -39,6 +41,10 @@ export class TileStorageService {
 
     return this.mTiles
 
+  }
+
+  get numberOfTiles(): number {
+    return this.mTiles.value.length
   }
 
   // save(): Promise<void> {
@@ -64,11 +70,11 @@ export class TileStorageService {
   }
 
   default(): Tile[] {
-    // return [ { position: 1, url: '', text: 'Hinzufügen', isNew: true } ]
-    return [ { position: 1, url: '', text: '1', isNew: false },
-    { position: 2, url: '', text: '2', isNew: false } ,
-    { position: 3, url: '', text: '3', isNew: false } ,
-    { position: 4, url: '', text: 'Hinzufügen', isNew: true }  ]
+    // return [ { position: 1, url: '', text: 'Hinzufügen', isAddTile: true } ]
+    return [ { url: '', text: '1', isAddTile: false },
+    { url: '', text: '2', isAddTile: false } ,
+    { url: '', text: '3', isAddTile: false } ,
+    { url: '', text: 'Hinzufügen', isAddTile: true }  ]
 
   }
 

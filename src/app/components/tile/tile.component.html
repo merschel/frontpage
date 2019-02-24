@@ -1,5 +1,9 @@
-<div *ngIf = "tile.isNew; else showContent">
-  +
+<div *ngIf = "tile.isAddTile; else showContent">
+
+    <button mat-icon-button (click) = "onAddNewTile()">
+      <mat-icon svgIcon="plus" > Hinzufügen </mat-icon>
+    </button>
+
 </div>
 
 <ng-template #showContent>
