@@ -31,7 +31,11 @@ export class SettingsStorageService {
 
     settings.numberOfTileColumns = numberOfTileColumns
 
-    this.mSettings.next(settings)
+    this.save().then( () => {
+
+      this.mSettings.next(settings)
+
+    })
 
   }
 
@@ -42,21 +46,31 @@ export class SettingsStorageService {
   }
 
   save(): Promise<void> {
+
     return new Promise( (resolve, reject) => {
+
+      localStorage.setItem( 'settings', JSON.stringify(this.mSettings.value) )
+
       resolve()
+
     })
+
   }
 
   load(): Promise<Settings> {
 
     return new Promise( (resolve, reject) => {
 
-      const settings: Settings = { numberOfTileColumns: 5 }
+      const settings: Settings = JSON.parse(localStorage.getItem('settings'))
 
       if ( settings ) {
+
         resolve(settings)
+
       } else {
-        reject( new Error() )
+
+        reject( new Error() ) // TODO
+
       }
 
     })
@@ -64,7 +78,9 @@ export class SettingsStorageService {
   }
 
   default(): Settings {
+
     return {numberOfTileColumns : 5}
+
   }
 
 }

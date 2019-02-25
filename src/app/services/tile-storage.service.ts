@@ -48,26 +48,36 @@ export class TileStorageService {
   }
 
   get numberOfTiles(): number {
+
     return this.mTiles.value.length
+
   }
 
   save(): Promise<void> {
     return new Promise( (resolve) => {
+
       localStorage.setItem( 'tiles', JSON.stringify( this.mTiles.value ))
+
       resolve()
+
     })
+
   }
 
   load(): Promise<Tile[]> {
 
     return new Promise( (resolve, reject) => {
 
-      const tiles = JSON.parse(localStorage.getItem('tiles'))
+      const tiles: Tile[] = JSON.parse(localStorage.getItem('tiles'))
 
       if ( tiles ) {
+
         resolve( tiles )
+
       } else {
-        reject( new Error() )
+
+        reject( new Error() ) // TODO
+
       }
 
     })
@@ -75,7 +85,9 @@ export class TileStorageService {
   }
 
   default(): Tile[] {
+
      return [ { url: '', text: 'Hinzufügen', isAddTile: true } ]
+
   }
 
 }
