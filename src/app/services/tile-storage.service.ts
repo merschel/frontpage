@@ -33,7 +33,11 @@ export class TileStorageService {
 
     tiles.splice( tiles.length - 1, 0, tile )
 
-    this.mTiles.next(tiles)
+    this.save().then( () => {
+
+      this.mTiles.next(tiles)
+
+    })
 
   }
 
@@ -47,19 +51,20 @@ export class TileStorageService {
     return this.mTiles.value.length
   }
 
-  // save(): Promise<void> {
-  //   return new Promise( (resolve, reject) => {
-  //     resolve();
-  //   });
-  // }
+  save(): Promise<void> {
+    return new Promise( (resolve) => {
+      localStorage.setItem( 'tiles', JSON.stringify( this.mTiles.value ))
+      resolve()
+    })
+  }
 
   load(): Promise<Tile[]> {
 
     return new Promise( (resolve, reject) => {
 
-      const tiles = this.mTiles.value
+      const tiles = JSON.parse(localStorage.getItem('tiles'))
 
-      if ( tiles.length > 1 ) {
+      if ( tiles ) {
         resolve( tiles )
       } else {
         reject( new Error() )

@@ -2,7 +2,7 @@ import { TileStorageService } from './../../services/tile-storage.service'
 import { Component, OnInit, Input } from '@angular/core'
 import { Tile } from '../../model/tile'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
-import { TileDialogComponent } from '../tile-dialog/tile-dialog.component';
+import { TileDialogComponent } from '../tile-dialog/tile-dialog.component'
 
 @Component({
   selector: 'app-tile',
@@ -37,8 +37,6 @@ export class TileComponent implements OnInit {
       }
 
     })
-
-
 
   }
 
