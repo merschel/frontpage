@@ -24,7 +24,12 @@ export class TileDialogComponent implements OnInit {
   }
 
   onSubmit( form ) {
-    this.dialogRef.close()
+
+    this.tile.url = 'https://' + this.form.value.url
+
+    this.tile.text = this.form.value.text
+
+    this.dialogRef.close( this.tile )
   }
 
 }

@@ -24,12 +24,18 @@ export class TileComponent implements OnInit {
 
   onAddNewTile() {
 
-    let tile: Tile = { url: '', text: '9' }
+    let tile: Tile = { url: '', text: '', isAddTile: true }
 
-    const dialogRef = this.dialog.open( TileDialogComponent, { width: '300px', data: tile } )
+    const dialogRef = this.dialog.open( TileDialogComponent, { data: tile } )
 
     dialogRef.afterClosed().subscribe( result => {
-      this.tileStorageService.addNew(tile)
+
+      if ( result ) {
+
+        this.tileStorageService.addNew(result)
+
+      }
+
     })
 
 

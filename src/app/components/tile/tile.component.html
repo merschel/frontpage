@@ -7,5 +7,7 @@
 </div>
 
 <ng-template #showContent>
-  {{tile.text}}
+  <a [href]="tile.url" mat-button>
+    {{tile.text}}
+  </a>
 </ng-template>
