@@ -25,7 +25,7 @@ export class TileStorageService {
 
   }
 
-  addNew(tile: Tile) {
+  add(tile: Tile) {
 
     tile.isAddTile = false
 
@@ -35,8 +35,28 @@ export class TileStorageService {
 
     this.save().then( () => {
 
-      this.mTiles.next(tiles)
+        this.mTiles.next(tiles)
 
+    })
+
+  }
+
+  remove( tile: Tile ) {
+
+    let tiles = this.mTiles.value
+
+    this.mTiles.value.forEach( ( val, i) => {
+
+      if ( val === tile ) {
+
+        this.mTiles.value.splice(i, 1)
+
+      }
+
+    })
+
+    this.save().then( () => {
+      // TODO give feedback
     })
 
   }

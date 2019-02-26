@@ -22,21 +22,27 @@ export class TileComponent implements OnInit {
 
   }
 
-  onAddNewTile() {
+  onAddTile() {
 
-    let tile: Tile = { url: '', text: '', isAddTile: true }
+    let empty: Tile = { url: '', text: '', isAddTile: true }
 
-    const dialogRef = this.dialog.open( TileDialogComponent, { data: tile } )
+    const dialogRef = this.dialog.open( TileDialogComponent, { data: empty } )
 
-    dialogRef.afterClosed().subscribe( result => {
+    dialogRef.afterClosed().subscribe( tile => {
 
-      if ( result ) {
+      if ( tile ) {
 
-        this.tileStorageService.addNew(result)
+        this.tileStorageService.add(tile)
 
       }
 
     })
+
+  }
+
+  onRemoveTile() {
+
+    this.tileStorageService.remove(this.tile)
 
   }
 

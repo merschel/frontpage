@@ -18,7 +18,7 @@ export class AppComponent {
     )
 
     this.matIconRegistry.addSvgIcon(
-      'delete',
+      'remove',
       sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/delete.svg')
     )
 
