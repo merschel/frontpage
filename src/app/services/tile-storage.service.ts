@@ -29,21 +29,19 @@ export class TileStorageService {
 
     tile.isAddTile = false
 
-    const tiles = this.mTiles.value
+    const length = this.mTiles.value.length
 
-    tiles.splice( tiles.length - 1, 0, tile )
+    this.mTiles.value.splice( length - 1, 0, tile )
 
     this.save().then( () => {
 
-        this.mTiles.next(tiles)
+        // TODO give feedback
 
     })
 
   }
 
   remove( tile: Tile ) {
-
-    let tiles = this.mTiles.value
 
     this.mTiles.value.forEach( ( val, i) => {
 
@@ -56,7 +54,9 @@ export class TileStorageService {
     })
 
     this.save().then( () => {
+
       // TODO give feedback
+
     })
 
   }
@@ -74,6 +74,7 @@ export class TileStorageService {
   }
 
   save(): Promise<void> {
+
     return new Promise( (resolve) => {
 
       localStorage.setItem( 'tiles', JSON.stringify( this.mTiles.value ))
