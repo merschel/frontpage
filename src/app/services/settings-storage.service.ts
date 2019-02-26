@@ -49,9 +49,17 @@ export class SettingsStorageService {
 
     return new Promise( (resolve, reject) => {
 
-      localStorage.setItem( 'settings', JSON.stringify(this.mSettings.value) )
+      try {
 
-      resolve()
+        localStorage.setItem( 'settings', JSON.stringify(this.mSettings.value) )
+
+        resolve()
+
+      } catch(error) {
+
+        reject(error)
+
+      }
 
     })
 
@@ -61,15 +69,23 @@ export class SettingsStorageService {
 
     return new Promise( (resolve, reject) => {
 
-      const settings: Settings = JSON.parse(localStorage.getItem('settings'))
+      try {
 
-      if ( settings ) {
+        const settings: Settings = JSON.parse(localStorage.getItem('settings'))
 
-        resolve(settings)
+        if ( settings ) {
 
-      } else {
+          resolve(settings)
 
-        reject( new Error() ) // TODO
+        } else {
+
+          reject( new Error() ) // TODO
+
+        }
+
+      } catch(error) {
+
+        reject( error )
 
       }
 

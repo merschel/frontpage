@@ -37,6 +37,10 @@ export class TileStorageService {
 
         // TODO give feedback
 
+    }).catch( error => {
+
+      console.log(error) // TODO
+
     })
 
   }
@@ -57,6 +61,10 @@ export class TileStorageService {
 
       // TODO give feedback
 
+    }).catch( error => {
+
+      console.log(error) // TODO
+
     })
 
   }
@@ -75,11 +83,19 @@ export class TileStorageService {
 
   save(): Promise<void> {
 
-    return new Promise( (resolve) => {
+    return new Promise( (resolve, reject) => {
 
-      localStorage.setItem( 'tiles', JSON.stringify( this.mTiles.value ))
+      try {
 
-      resolve()
+        localStorage.setItem( 'tiles', JSON.stringify( this.mTiles.value ))
+
+        resolve()
+
+      } catch ( error ) {
+
+        reject( error )
+
+      }
 
     })
 
@@ -89,15 +105,23 @@ export class TileStorageService {
 
     return new Promise( (resolve, reject) => {
 
-      const tiles: Tile[] = JSON.parse(localStorage.getItem('tiles'))
+      try {
 
-      if ( tiles ) {
+        const tiles: Tile[] = JSON.parse(localStorage.getItem('tiles'))
 
-        resolve( tiles )
+        if ( tiles ) {
 
-      } else {
+          resolve( tiles )
 
-        reject( new Error() ) // TODO
+        } else {
+
+          reject( new Error() ) // TODO
+
+        }
+
+      } catch (error) {
+
+        reject(error)
 
       }
 
