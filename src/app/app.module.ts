@@ -27,7 +27,7 @@ import { TileDialogComponent } from './components/tile-dialog/tile-dialog.compon
 
 // Services
 import { SettingsStorageService } from './services/settings-storage.service'
-
+import { TileStorageService } from './services/tile-storage.service'
 
 @NgModule({
   declarations: [
@@ -53,6 +53,7 @@ import { SettingsStorageService } from './services/settings-storage.service'
   ],
   providers: [
     SettingsStorageService,
+    TileStorageService
   ],
   entryComponents: [
     TileDialogComponent,

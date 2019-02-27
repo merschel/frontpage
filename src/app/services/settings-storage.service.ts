@@ -35,6 +35,10 @@ export class SettingsStorageService {
 
       this.mSettings.next(settings)
 
+    }).catch( error => {
+
+      console.log(error) // TODO
+
     })
 
   }
