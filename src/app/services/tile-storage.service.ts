@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core'
 })
 export class TileStorageService {
 
-  mTiles: BehaviorSubject<Tile[]>
+  private mTiles: BehaviorSubject<Tile[]>
 
   constructor() {
 

@@ -12,8 +12,7 @@ import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms'
 })
 export class TileDialogComponent implements OnInit {
 
-  mForm: FormGroup
-  mText: string
+  private mForm: FormGroup
 
   constructor(private dialogRef: MatDialogRef<TileDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public tile: Tile,
@@ -23,20 +22,6 @@ export class TileDialogComponent implements OnInit {
   ngOnInit() {
     this.setValues()
     this.onUrlChange()
-  }
-
-  get url(): AbstractControl {
-    console.log('dfgvjklenvnde')
-    return this.mForm.get('url')
-  }
-
-  setValues() {
-
-    this.mForm = this.formBuilder.group({
-      url: this.tile.url ? this.tile.url : '',
-      text: this.tile.text ? this.tile.text : ''
-    })
-
   }
 
   onSubmit() {
@@ -49,7 +34,16 @@ export class TileDialogComponent implements OnInit {
 
   }
 
-  onUrlChange() {
+  private setValues() {
+
+    this.mForm = this.formBuilder.group({
+      url: this.tile.url ? this.tile.url : '',
+      text: this.tile.text ? this.tile.text : ''
+    })
+
+  }
+
+  private onUrlChange() {
 
     this.mForm.get('url').valueChanges.subscribe( url => {
 

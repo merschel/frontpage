@@ -49,7 +49,7 @@ export class SettingsStorageService {
 
   }
 
-  save(): Promise<void> {
+  private save(): Promise<void> {
 
     return new Promise( (resolve, reject) => {
 
@@ -69,7 +69,7 @@ export class SettingsStorageService {
 
   }
 
-  load(): Promise<Settings> {
+  private load(): Promise<Settings> {
 
     return new Promise( (resolve, reject) => {
 
@@ -97,7 +97,7 @@ export class SettingsStorageService {
 
   }
 
-  default(): Settings {
+  private default(): Settings {
 
     return {numberOfTileColumns : 5}
 

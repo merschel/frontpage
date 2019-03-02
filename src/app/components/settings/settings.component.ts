@@ -15,7 +15,9 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {}
 
   setNumberOfTileColumns(newValue) {
+
     this.settingsStorage.setNumberOfTileColumnsTo(newValue)
+
   }
 
 }
