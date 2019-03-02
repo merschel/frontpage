@@ -1,9 +1,22 @@
 
 <mat-tab-group [disableRipple]="false">
-    <mat-tab label="Links">
+    <mat-tab>
+
+      <ng-template mat-tab-label>
+        <mat-icon svgIcon="plus">
+          Hinzufügen
+        </mat-icon>
+      </ng-template>
+
       <app-floor></app-floor>
     </mat-tab>
-    <mat-tab label="Einstellungen">
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon svgIcon="settings">
+          Hinzufügen
+        </mat-icon>
+      </ng-template>
       <app-settings></app-settings>
     </mat-tab>
 </mat-tab-group>
