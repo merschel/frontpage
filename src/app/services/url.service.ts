@@ -6,6 +6,12 @@ import * as UrlParser from 'url-parse'
 })
 export class UrlService {
 
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+          //   Member Variables    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+
   private mUrl:       string
   private mProtocol: string
   private mSlashes:  string
@@ -21,29 +27,40 @@ export class UrlService {
   private mHref:     string
   private mOrigin:   string
 
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+            //    Constructor    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+
   constructor() {}
 
-  private split() {
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+           //    Public Functions    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
 
-    let urlParser = new UrlParser(this.mUrl)
+  log() {
 
-    this.mProtocol = urlParser.protocol
-    this.mSlashes  = urlParser.slashes
-    this.mAuth     = urlParser.auth
-    this.mUsername = urlParser.username
-    this.mPassword = urlParser.password
-    this.mHost     = urlParser.host
-    this.mHostname = urlParser.hostname
-    this.mPort     = urlParser.port
-    this.mPathname = urlParser.pathname
-    this.mQuery    = urlParser.query
-    this.mHash     = urlParser.hash
-    this.mHref     = urlParser.href
-    this.mOrigin   = urlParser.origin
+    console.log( 'mProtocol ' + this.mProtocol )
+    console.log( 'mSlashes ' + this.mSlashes )
+    console.log( 'mAuth ' + this.mAuth )
+    console.log( 'mUsername ' + this.mUsername )
+    console.log( 'mPassword ' + this.mPassword )
+    console.log( 'mHost ' + this.mHost )
+    console.log( 'mHostname ' + this.mHostname )
+    console.log( 'mPort ' + this.mPort )
+    console.log( 'mPathname ' + this.mPathname )
+    console.log( 'mQuery ' + this.mQuery )
+    console.log( 'mHash ' + this.mHash )
+    console.log( 'mHref ' + this.mHref )
+    console.log( 'mOrigin ' + this.mOrigin )
+    console.log( 'url ' + this.mUrl )
 
   }
 
-  // normailze() {
+// normailze() {
 
   //   let url: string
 
@@ -72,27 +89,39 @@ export class UrlService {
 
   // }
 
-  log() {
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+           //   Private Functions    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
 
-    console.log( 'mProtocol ' + this.mProtocol )
-    console.log( 'mSlashes ' + this.mSlashes )
-    console.log( 'mAuth ' + this.mAuth )
-    console.log( 'mUsername ' + this.mUsername )
-    console.log( 'mPassword ' + this.mPassword )
-    console.log( 'mHost ' + this.mHost )
-    console.log( 'mHostname ' + this.mHostname )
-    console.log( 'mPort ' + this.mPort )
-    console.log( 'mPathname ' + this.mPathname )
-    console.log( 'mQuery ' + this.mQuery )
-    console.log( 'mHash ' + this.mHash )
-    console.log( 'mHref ' + this.mHref )
-    console.log( 'mOrigin ' + this.mOrigin )
-    console.log( 'url ' + this.mUrl )
+  private split() {
 
+    let urlParser = new UrlParser(this.mUrl)
+
+    this.mProtocol = urlParser.protocol
+    this.mSlashes  = urlParser.slashes
+    this.mAuth     = urlParser.auth
+    this.mUsername = urlParser.username
+    this.mPassword = urlParser.password
+    this.mHost     = urlParser.host
+    this.mHostname = urlParser.hostname
+    this.mPort     = urlParser.port
+    this.mPathname = urlParser.pathname
+    this.mQuery    = urlParser.query
+    this.mHash     = urlParser.hash
+    this.mHref     = urlParser.href
+    this.mOrigin   = urlParser.origin
 
   }
 
-  set(url: string) {
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+           //   Getter and Setter    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+
+  set url(url: string) {
     this.mUrl = url
     this.split()
   }

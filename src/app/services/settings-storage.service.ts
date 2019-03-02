@@ -7,7 +7,19 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
 })
 export class SettingsStorageService {
 
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+          //   Member Variables    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+
   private mSettings: BehaviorSubject<Settings>
+
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+            //    Constructor    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
 
   constructor() {
 
@@ -25,29 +37,17 @@ export class SettingsStorageService {
 
   }
 
-  setNumberOfTileColumnsTo( numberOfTileColumns: number ) {
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+           //    Public Functions    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
 
-    const settings = this.mSettings.value
-
-    settings.numberOfTileColumns = numberOfTileColumns
-
-    this.save().then( () => {
-
-      this.mSettings.next(settings)
-
-    }).catch( error => {
-
-      console.log(error) // TODO
-
-    })
-
-  }
-
-  get settings(): BehaviorSubject<Settings> {
-
-    return this.mSettings
-
-  }
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+           //   Private Functions    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
 
   private save(): Promise<void> {
 
@@ -100,6 +100,36 @@ export class SettingsStorageService {
   private default(): Settings {
 
     return {numberOfTileColumns : 5}
+
+  }
+
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+           //   Getter and Setter    //
+  //////////////////////////////////////////////
+  //////////////////////////////////////////////
+
+  setNumberOfTileColumnsTo( numberOfTileColumns: number ) {
+
+    const settings = this.mSettings.value
+
+    settings.numberOfTileColumns = numberOfTileColumns
+
+    this.save().then( () => {
+
+      this.mSettings.next(settings)
+
+    }).catch( error => {
+
+      console.log(error) // TODO
+
+    })
+
+  }
+
+  get settings(): BehaviorSubject<Settings> {
+
+    return this.mSettings
 
   }
 
