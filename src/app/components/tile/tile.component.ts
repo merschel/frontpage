@@ -46,4 +46,16 @@ export class TileComponent implements OnInit {
 
   }
 
+  onEditTile() {
+
+    const dialogRef = this.dialog.open( TileDialogComponent, { data: this.tile } )
+
+    dialogRef.afterClosed().subscribe( tile => {
+
+      this.tileStorageService.onChange()
+
+    })
+
+  }
+
 }

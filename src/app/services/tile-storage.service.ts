@@ -45,6 +45,20 @@ export class TileStorageService {
 
   }
 
+  onChange() {
+
+    this.save().then( () => {
+
+      // TODO give feedback
+
+    }).catch( error => {
+
+      console.log(error) // TODO
+
+    })
+
+  }
+
   remove( tile: Tile ) {
 
     this.mTiles.value.forEach( ( val, i) => {
@@ -81,7 +95,7 @@ export class TileStorageService {
 
   }
 
-  save(): Promise<void> {
+  private save(): Promise<void> {
 
     return new Promise( (resolve, reject) => {
 
@@ -101,7 +115,7 @@ export class TileStorageService {
 
   }
 
-  load(): Promise<Tile[]> {
+  private load(): Promise<Tile[]> {
 
     return new Promise( (resolve, reject) => {
 
@@ -129,7 +143,7 @@ export class TileStorageService {
 
   }
 
-  default(): Tile[] {
+  private default(): Tile[] {
 
      return [ { url: '', text: 'Hinzufügen', isAddTile: true } ]
 

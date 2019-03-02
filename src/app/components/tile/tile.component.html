@@ -21,6 +21,15 @@
       </button>
 
     </div>
+
+    <div>
+
+      <button mat-icon-button (click)="onEditTile()">
+          <mat-icon svgIcon = 'settings'></mat-icon>
+      </button>
+
+    </div>
+
     <div>
       <a [href]="tile.url" mat-button>
         {{tile.text}}
