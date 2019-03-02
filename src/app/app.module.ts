@@ -21,7 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { AppComponent } from './app.component'
 import { MainComponent } from './components/main/main.component'
 import { TileComponent } from './components/tile/tile.component'
-import { FloorComponent } from './components/floor/floor.component'
+import { GroupComponent } from './components/group/group.component'
 import { SettingsComponent } from './components/settings/settings.component'
 import { TileDialogComponent } from './components/tile-dialog/tile-dialog.component'
 
@@ -34,7 +34,7 @@ import { TileStorageService } from './services/tile-storage.service'
     AppComponent,
     MainComponent,
     TileComponent,
-    FloorComponent,
+    GroupComponent,
     SettingsComponent,
     TileDialogComponent
   ],
