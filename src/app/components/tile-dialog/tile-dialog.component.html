@@ -1,30 +1,30 @@
 
-<form [formGroup] = "mForm" (ngSubmit)="onSubmit()">
+<form [formGroup] = "mForm" (ngSubmit) = "onSubmit()">
 
   <h1 mat-dialog-content> Seite Hinzufügen </h1>
 
   <mat-dialog-content>
 
     <mat-form-field>
-      <input matInput placeholder="Url" formControlName = "url" (ngModelChange) = "onUrlChange($event)">
+      <input matInput placeholder = "Url" formControlName = "url">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Text" formControlName = "text" [ngModel] = 'mText'>
+      <input matInput placeholder = "Text" formControlName = "text">
     </mat-form-field>
 
   </mat-dialog-content>
 
   <mat-dialog-actions>
 
-    <button mat-icon-button type="submit">
-      <mat-icon svgIcon="check">
+    <button mat-icon-button type = "submit">
+      <mat-icon svgIcon = "check">
         Ok
       </mat-icon>
     </button>
 
     <button mat-icon-button mat-dialog-close>
-      <mat-icon svgIcon="close">
+      <mat-icon svgIcon = "close">
         Abbrechen
       </mat-icon>
     </button>

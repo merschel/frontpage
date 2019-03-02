@@ -2,7 +2,7 @@ import { UrlService } from 'src/app/services/url.service';
 import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
 import { Tile } from '../../model/tile'
-import { FormGroup, FormBuilder } from '@angular/forms'
+import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms'
 
 @Component({
   selector: 'app-tile-dialog',
@@ -18,13 +18,25 @@ export class TileDialogComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<TileDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public tile: Tile,
               private formBuilder: FormBuilder,
-              private url: UrlService) { }
+              private urlService: UrlService) { }
 
   ngOnInit() {
+    this.setValues()
+    this.onUrlChange()
+  }
+
+  get url(): AbstractControl {
+    console.log('dfgvjklenvnde')
+    return this.mForm.get('url')
+  }
+
+  setValues() {
+
     this.mForm = this.formBuilder.group({
       url: this.tile.url ? this.tile.url : '',
       text: this.tile.text ? this.tile.text : ''
     })
+
   }
 
   onSubmit() {
@@ -37,13 +49,19 @@ export class TileDialogComponent implements OnInit {
 
   }
 
-  onUrlChange(url: string) {
+  onUrlChange() {
 
-    this.url.set(url)
+    this.mForm.get('url').valueChanges.subscribe( url => {
 
-    if ( this.url.hostname !== 'localhost' ) {
-      this.mText = this.url.hostname
-    }
+      this.urlService.set(url)
+
+      if ( this.urlService.hostname !== 'localhost' ) {
+
+        this.mForm.get('text').setValue(this.urlService.hostname)
+
+      }
+
+    })
 
   }
 
