@@ -109,7 +109,7 @@ export class SettingsStorageService {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  setNumberOfTileColumnsTo( numberOfTileColumns: number ) {
+  set numberOfTileColumns( numberOfTileColumns: number ) {
 
     const settings = this.mSettings.value
 

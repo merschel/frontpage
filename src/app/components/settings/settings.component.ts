@@ -50,9 +50,9 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  setNumberOfTileColumns(newValue: number) {
+  setNumberOfTileColumns(numberOfTileColumns: number) {
 
-    this.settingsStorage.setNumberOfTileColumnsTo(newValue)
+    this.settingsStorage.numberOfTileColumns = numberOfTileColumns
 
   }
 
