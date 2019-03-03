@@ -1,7 +1,5 @@
-
-import { TileStorageService } from './../../services/tile-storage.service'
-import { Component, OnInit } from '@angular/core'
-import { SettingsStorageService } from 'src/app/services/settings-storage.service'
+import { Group } from './../../model/group'
+import { Component, OnInit, Input } from '@angular/core'
 
 @Component({
   selector: 'app-group',
@@ -15,6 +13,8 @@ export class GroupComponent implements OnInit {
           //   Input Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+  @Input() group: Group
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -34,8 +34,7 @@ export class GroupComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor( public settingsStorage: SettingsStorageService,
-               public tileStorageService: TileStorageService ) {}
+  constructor() {}
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////

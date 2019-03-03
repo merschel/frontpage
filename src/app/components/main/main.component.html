@@ -1,22 +1,45 @@
 
-<mat-tab-group [disableRipple]="false">
-    <mat-tab>
+<div *ngIf = 'groupStorage.groups | async as groups'>
+
+  <mat-tab-group [disableRipple]="false">
+
+    <!-- Groups -->
+
+    <mat-tab *ngFor = 'let group of groups'>
 
       <ng-template mat-tab-label>
-          Links
+
+        {{group.name}}
+
       </ng-template>
 
-      <app-group></app-group>
+      <app-group [group] = 'group' ></app-group>
+
     </mat-tab>
 
+    <!-- Settings -->
+
     <mat-tab>
+
       <ng-template mat-tab-label>
+
         <mat-icon svgIcon="settings">
-          Hinzufügen
+
+          Einstellungen
+
         </mat-icon>
+
       </ng-template>
+
       <app-settings></app-settings>
+
     </mat-tab>
-</mat-tab-group>
+
+  </mat-tab-group>
+
+</div>
+
+
+
 
 

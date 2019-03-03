@@ -1,6 +1,42 @@
 
-<div *ngIf="settingsStorage.settings | async as settings">
-  <mat-form-field>
-    <input matInput placeholder="Anzahl an Spalten" [ngModel]="settings.numberOfTileColumns" (ngModelChange) = "setNumberOfTileColumns($event)">
-  </mat-form-field>
+<div *ngIf="groupStorage.groups | async as groups">
+
+  <div>
+
+    <button mat-icon-button (click)="onAdd()">
+
+      <mat-icon svgIcon="plus"></mat-icon>
+
+    </button>
+
+  </div>
+
+  <mat-accordion displayMode="default" [multi]="false"
+                 [hideToggle]="false">
+
+      <mat-expansion-panel *ngFor = 'let group of groups' [hideToggle]= 'true'>
+
+          <mat-expansion-panel-header>
+
+            {{ group.name }}
+
+          </mat-expansion-panel-header>
+
+          <app-setting-row [group] = 'group' ></app-setting-row>
+
+          <mat-action-row>
+
+            <button mat-icon-button (click)="onRemove( group )">
+
+              <mat-icon svgIcon="remove"></mat-icon>
+
+            </button>
+
+          </mat-action-row>
+
+      </mat-expansion-panel>
+
+  </mat-accordion>
+
 </div>
+

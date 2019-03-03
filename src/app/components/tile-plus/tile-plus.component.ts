@@ -1,18 +1,24 @@
+import { TileDialogComponent } from './../tile-dialog/tile-dialog.component'
+import { Tile } from './../../model/tile'
+import { Group } from './../../model/group'
 import { GroupStorageService } from './../../services/group-storage.service'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
+import { MatDialog } from '@angular/material'
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-tile-plus',
+  templateUrl: './tile-plus.component.html',
+  styleUrls: ['./tile-plus.component.css']
 })
-export class MainComponent implements OnInit {
+export class TilePlusComponent implements OnInit {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
           //   Input Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+  @Input() group: Group
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -28,11 +34,12 @@ export class MainComponent implements OnInit {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-          //    Constructor    //
+            //    Constructor    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor(public groupStorage: GroupStorageService) {}
+constructor( private dialog: MatDialog,
+             private groupStorage: GroupStorageService ) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -41,9 +48,6 @@ export class MainComponent implements OnInit {
   //////////////////////////////////////////////
 
   ngOnInit() {
-
-    // localStorage.clear()
-
   }
 
   //////////////////////////////////////////////
@@ -51,6 +55,24 @@ export class MainComponent implements OnInit {
            //    Public Functions    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+  onAddTile() {
+
+    let empty: Tile = { url: '', text: '', isAddTile: true }
+
+    const dialogRef = this.dialog.open( TileDialogComponent, { data: empty } )
+
+    dialogRef.afterClosed().subscribe( tile => {
+
+      if ( tile ) {
+
+        this.groupStorage.add(tile, this.group)
+
+      }
+
+    })
+
+  }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -63,5 +85,9 @@ export class MainComponent implements OnInit {
            //   Getter and Setter    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+
+
+
 
 }

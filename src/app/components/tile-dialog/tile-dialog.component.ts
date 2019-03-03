@@ -1,8 +1,8 @@
-import { UrlService } from 'src/app/services/url.service';
+import { UrlService } from 'src/app/services/url.service'
 import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
 import { Tile } from '../../model/tile'
-import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms'
+import { FormGroup, FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-tile-dialog',
@@ -30,7 +30,7 @@ export class TileDialogComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  private mForm: FormGroup
+  mForm: FormGroup
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////

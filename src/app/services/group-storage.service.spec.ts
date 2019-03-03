@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing'
 
-import { TileStorageService } from './tile-storage.service'
+import { GroupStorageService } from './group-storage.service'
 
-describe('TileStorageService', () => {
+describe('GroupStorageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}))
 
   it('should be created', () => {
-    const service: TileStorageService = TestBed.get(TileStorageService)
+    const service: GroupStorageService = TestBed.get(GroupStorageService)
     expect(service).toBeTruthy()
   })
 })

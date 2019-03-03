@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatExpansionModule } from '@angular/material/expansion'
 
 // Components
 
@@ -26,8 +27,9 @@ import { SettingsComponent } from './components/settings/settings.component'
 import { TileDialogComponent } from './components/tile-dialog/tile-dialog.component'
 
 // Services
-import { SettingsStorageService } from './services/settings-storage.service'
-import { TileStorageService } from './services/tile-storage.service'
+import { GroupStorageService } from './services/group-storage.service'
+import { SettingRowComponent } from './components/setting-row/setting-row.component'
+import { TilePlusComponent } from './components/tile-plus/tile-plus.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { TileStorageService } from './services/tile-storage.service'
     TileComponent,
     GroupComponent,
     SettingsComponent,
-    TileDialogComponent
+    TileDialogComponent,
+    SettingRowComponent,
+    TilePlusComponent
   ],
   imports: [
     BrowserModule,
@@ -49,11 +53,11 @@ import { TileStorageService } from './services/tile-storage.service'
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [
-    SettingsStorageService,
-    TileStorageService
+    GroupStorageService,
   ],
   entryComponents: [
     TileDialogComponent,

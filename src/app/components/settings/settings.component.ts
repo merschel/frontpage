@@ -1,7 +1,6 @@
-
-import { SettingsStorageService } from 'src/app/services/settings-storage.service'
+import { Group } from './../../model/group'
+import { GroupStorageService } from './../../services/group-storage.service'
 import { Component, OnInit } from '@angular/core'
-
 
 @Component({
   selector: 'app-settings',
@@ -34,7 +33,7 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor(public settingsStorage: SettingsStorageService) { }
+  constructor(public groupStorage: GroupStorageService) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -50,9 +49,23 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  setNumberOfTileColumns(numberOfTileColumns: number) {
+  onAdd() {
 
-    this.settingsStorage.numberOfTileColumns = numberOfTileColumns
+    const group: Group = {
+      name: 'new',
+      settings: {
+        numberOfColumns: 5,
+      },
+      tiles: []
+    }
+
+    this.groupStorage.add(group)
+
+  }
+
+  onRemove( group ) {
+
+    this.groupStorage.remove( group )
 
   }
 

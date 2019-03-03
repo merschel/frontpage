@@ -1,18 +1,22 @@
 import { GroupStorageService } from './../../services/group-storage.service'
-import { Component, OnInit } from '@angular/core'
+import { FormGroup, FormBuilder } from '@angular/forms'
+import { Group } from './../../model/group'
+import { Component, OnInit, Input } from '@angular/core'
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-setting-row',
+  templateUrl: './setting-row.component.html',
+  styleUrls: ['./setting-row.component.css']
 })
-export class MainComponent implements OnInit {
+export class SettingRowComponent implements OnInit {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
           //   Input Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+  @Input() group: Group
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -26,13 +30,16 @@ export class MainComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
+  mForm: FormGroup
+
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-          //    Constructor    //
+            //    Constructor    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor(public groupStorage: GroupStorageService) {}
+  constructor( private formBuilder: FormBuilder,
+               private groupStorage: GroupStorageService ) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -41,9 +48,8 @@ export class MainComponent implements OnInit {
   //////////////////////////////////////////////
 
   ngOnInit() {
-
-    // localStorage.clear()
-
+    this.setValues()
+    this.onChange()
   }
 
   //////////////////////////////////////////////
@@ -57,6 +63,30 @@ export class MainComponent implements OnInit {
            //   Private Functions    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+  private setValues() {
+
+    this.mForm = this.formBuilder.group({
+
+      name: this.group.name,
+      numberOfColumns: this.group.settings.numberOfColumns
+
+    })
+
+  }
+
+  private onChange() {
+
+    this.mForm.valueChanges.subscribe( values => {
+
+      this.group.name = values.name
+      this.group.settings.numberOfColumns = values.numberOfColumns
+
+      this.groupStorage.onChange()
+
+    })
+
+  }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////

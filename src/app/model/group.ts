@@ -1,5 +1,8 @@
 import { Tile } from './tile'
+import { Settings } from './settings'
 
 export interface Group {
-  Tiles: Tile[]
+  name: string,
+  tiles: Tile[],
+  settings: Settings
 }

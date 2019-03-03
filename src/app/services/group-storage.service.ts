@@ -1,11 +1,12 @@
 import { Tile } from './../model/tile'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
 import { Injectable } from '@angular/core'
+import { Group } from './../model/group'
 
 @Injectable({
   providedIn: 'root'
 })
-export class TileStorageService {
+export class GroupStorageService {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -13,7 +14,7 @@ export class TileStorageService {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  private mTiles: BehaviorSubject<Tile[]>
+  private mGroups: BehaviorSubject<Group[]>
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -23,15 +24,15 @@ export class TileStorageService {
 
   constructor() {
 
-    this.mTiles = new BehaviorSubject(this.default())
+    this.mGroups = new BehaviorSubject( this.default() )
 
-    this.load().then( tiles => {
+    this.load().then( groups => {
 
-      this.mTiles.next(tiles)
+      this.mGroups.next( groups )
 
     }).catch( error => {
 
-      console.log()
+        // todo
 
     })
 
@@ -43,17 +44,39 @@ export class TileStorageService {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  add(tile: Tile) {
+  findGroupOf( tile: Tile ): Group {
 
-    tile.isAddTile = false
+    this.mGroups.value.forEach( group => {
 
-    const length = this.mTiles.value.length
+      group.tiles.forEach( it => {
 
-    this.mTiles.value.splice( length - 1, 0, tile )
+        if ( it === tile ) { return group }
+
+      })
+
+    })
+
+    return undefined
+
+  }
+
+  add( newGroup: Group ): void
+  add( tile: Tile, toGroup: Group ): void
+  add( arg1: any, arg2?: Group ): void {
+
+    if ( this.isInstanceOfGroup(arg1) ) {
+
+      this.mGroups.value.push( arg1 )
+
+    } else { // arg1 = tile, arg2 = group
+
+      arg2.tiles.push( arg1 )
+
+    }
 
     this.save().then( () => {
 
-        // TODO give feedback
+      // TODO give feedback
 
     }).catch( error => {
 
@@ -77,25 +100,45 @@ export class TileStorageService {
 
   }
 
-  remove( tile: Tile ) {
+  remove( arg: Group | Tile ) {
 
-    this.mTiles.value.forEach( ( val, i) => {
+    if ( this.isInstanceOfGroup( arg ) ) {
 
-      if ( val === tile ) {
+      this.mGroups.value.forEach( ( group, i) => {
 
-        this.mTiles.value.splice(i, 1)
+        if ( group === arg ) {
 
-      }
+          this.mGroups.value.splice(i, 1)
 
-    })
+        }
+
+      })
+
+    } else {
+
+      this.mGroups.value.forEach( group => {
+
+          group.tiles.forEach( (tile, i) => {
+
+            if ( tile === arg ) {
+
+              group.tiles.splice(i, 1)
+
+            }
+
+          })
+
+        })
+
+    }
 
     this.save().then( () => {
 
-      // TODO give feedback
+      // TODO feedback
 
     }).catch( error => {
 
-      console.log(error) // TODO
+      // TODO feedback
 
     })
 
@@ -107,19 +150,27 @@ export class TileStorageService {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
+  private isInstanceOfTile( obj: any ): obj is Tile {
+    return 'url' in obj
+  }
+
+  private isInstanceOfGroup( obj: any ): obj is Group {
+    return 'tiles' in obj
+  }
+
   private save(): Promise<void> {
 
     return new Promise( (resolve, reject) => {
 
       try {
 
-        localStorage.setItem( 'tiles', JSON.stringify( this.mTiles.value ))
+        localStorage.setItem('groups', JSON.stringify( this.mGroups.value ))
 
         resolve()
 
-      } catch ( error ) {
+      } catch (error) {
 
-        reject( error )
+        reject(error)
 
       }
 
@@ -127,17 +178,17 @@ export class TileStorageService {
 
   }
 
-  private load(): Promise<Tile[]> {
+  private load(): Promise<Group[]> {
 
     return new Promise( (resolve, reject) => {
 
       try {
 
-        const tiles: Tile[] = JSON.parse(localStorage.getItem('tiles'))
+        const groups = JSON.parse( localStorage.getItem('groups') )
 
-        if ( tiles ) {
+        if ( groups ) {
 
-          resolve( tiles )
+          resolve( groups )
 
         } else {
 
@@ -155,9 +206,15 @@ export class TileStorageService {
 
   }
 
-  private default(): Tile[] {
+  private default(): Group[] {
 
-     return [ { url: '', text: 'Hinzufügen', isAddTile: true } ]
+    return [{
+      tiles: [],
+      name: 'Allgemein',
+      settings: {
+        numberOfColumns: 5
+      }
+    }]
 
   }
 
@@ -167,16 +224,8 @@ export class TileStorageService {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  get tiles(): BehaviorSubject<Tile[]> {
-
-    return this.mTiles
-
-  }
-
-  get numberOfTiles(): number {
-
-    return this.mTiles.value.length
-
+  get groups(): BehaviorSubject<Group[]> {
+    return this.mGroups
   }
 
 }

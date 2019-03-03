@@ -1,7 +1,7 @@
-import { TileStorageService } from './../../services/tile-storage.service'
+import { GroupStorageService } from './../../services/group-storage.service'
 import { Component, OnInit, Input } from '@angular/core'
 import { Tile } from '../../model/tile'
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { MatDialog } from '@angular/material'
 import { TileDialogComponent } from '../tile-dialog/tile-dialog.component'
 
 @Component({
@@ -37,8 +37,8 @@ export class TileComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor(private tileStorageService: TileStorageService,
-              public dialog: MatDialog ) {}
+  constructor( private groupStorage: GroupStorageService,
+               private dialog: MatDialog ) {}
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -56,27 +56,9 @@ export class TileComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  onAddTile() {
-
-    let empty: Tile = { url: '', text: '', isAddTile: true }
-
-    const dialogRef = this.dialog.open( TileDialogComponent, { data: empty } )
-
-    dialogRef.afterClosed().subscribe( tile => {
-
-      if ( tile ) {
-
-        this.tileStorageService.add(tile)
-
-      }
-
-    })
-
-  }
-
   onRemoveTile() {
 
-    this.tileStorageService.remove(this.tile)
+    this.groupStorage.remove(this.tile)
 
   }
 
@@ -86,7 +68,7 @@ export class TileComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe( tile => {
 
-      this.tileStorageService.onChange()
+      this.groupStorage.onChange()
 
     })
 

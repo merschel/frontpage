@@ -1,14 +1,20 @@
-<div *ngIf = "settingsStorage.settings | async as settings">
 
-  <mat-grid-list *ngIf = "tileStorageService.tiles | async as tiles" [cols] = "settings.numberOfTileColumns">
+  <mat-grid-list [cols] = "group.settings.numberOfColumns">
 
-    <mat-grid-tile *ngFor = "let tile of tiles">
+    <!-- Tile List -->
+
+    <mat-grid-tile *ngFor = "let tile of group.tiles">
 
       <app-tile [tile] = "tile"></app-tile>
 
     </mat-grid-tile>
 
+    <!-- Add Tile -->
+
+    <mat-grid-tile>
+
+      <app-tile-plus [group] = "group"></app-tile-plus>
+
+    </mat-grid-tile>
+
   </mat-grid-list>
-
-</div>
-

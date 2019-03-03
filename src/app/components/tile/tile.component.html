@@ -1,43 +1,28 @@
-<div *ngIf = "tile.isAddTile; else showContent">
 
-    <button mat-icon-button (click) = "onAddTile()">
-      <mat-icon svgIcon="plus" >
-        Hinzufügen
-      </mat-icon>
-    </button>
-
-</div>
-
-<ng-template #showContent>
+<div>
 
   <div>
 
-    <div>
-
-      <button mat-icon-button (click)="onRemoveTile()">
-          <mat-icon svgIcon = "remove">
-            Entfernen
-          </mat-icon>
-      </button>
-
-    </div>
-
-    <div>
-
-      <button mat-icon-button (click)="onEditTile()">
-          <mat-icon svgIcon = 'tune'></mat-icon>
-      </button>
-
-    </div>
-
-    <div>
-      <a [href]="tile.url" mat-button>
-        {{tile.text}}
-      </a>
-    </div>
+    <button mat-icon-button (click)="onRemoveTile()">
+        <mat-icon svgIcon = "remove">
+          Entfernen
+        </mat-icon>
+    </button>
 
   </div>
 
+  <div>
 
+    <button mat-icon-button (click)="onEditTile()">
+        <mat-icon svgIcon = 'tune'></mat-icon>
+    </button>
 
-</ng-template>
+  </div>
+
+  <div>
+    <a [href]="tile.url" mat-button>
+      {{tile.text}}
+    </a>
+  </div>
+
+</div>
