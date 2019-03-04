@@ -27,6 +27,8 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
+  displayedColumns: string[] = ['name', 'numberOfColumns', 'action']
+
   //////////////////////////////////////////////
   //////////////////////////////////////////////
             //    Constructor    //
@@ -52,7 +54,7 @@ export class SettingsComponent implements OnInit {
   onAdd() {
 
     const group: Group = {
-      name: 'new',
+      name: 'Neu',
       settings: {
         numberOfColumns: 5,
       },

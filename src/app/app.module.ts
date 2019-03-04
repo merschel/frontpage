@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatExpansionModule } from '@angular/material/expansion'
+import { MatTableModule } from '@angular/material/table'
 
 // Components
 
@@ -54,7 +55,8 @@ import { TilePlusComponent } from './components/tile-plus/tile-plus.component'
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [
     GroupStorageService,
