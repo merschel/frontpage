@@ -1,6 +1,7 @@
 import { Group } from './../../model/group'
 import { GroupStorageService } from './../../services/group-storage.service'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core'
+import { MatTable } from '@angular/material';
 
 @Component({
   selector: 'app-settings',
@@ -17,15 +18,17 @@ export class SettingsComponent implements OnInit {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-          //   Output Variables    //
+  //   Output Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-          //   Member Variables    //
+  //   Member Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+  @ViewChild(MatTable) table: MatTable<any>
 
   displayedColumns: string[] = ['name', 'numberOfColumns', 'action']
 
@@ -35,7 +38,8 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor(public groupStorage: GroupStorageService) { }
+  constructor(public groupStorage: GroupStorageService,
+              private changeDetectorRefs: ChangeDetectorRef) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -63,11 +67,15 @@ export class SettingsComponent implements OnInit {
 
     this.groupStorage.add(group)
 
+    this.refreshTable()
+
   }
 
   onRemove( group ) {
 
     this.groupStorage.remove( group )
+
+    this.refreshTable()
 
   }
 
@@ -76,6 +84,12 @@ export class SettingsComponent implements OnInit {
            //   Private Functions    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+  private refreshTable() {
+
+    this.table.renderRows()
+
+  }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
