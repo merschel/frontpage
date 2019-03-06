@@ -28,9 +28,12 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  @ViewChild(MatTable) table: MatTable<any>
+  @ViewChild(MatTable) mTable: MatTable<any>
 
-  displayedColumns: string[] = ['name', 'numberOfColumns', 'action']
+  mDisplayedColumns: string[] = ['name', 'numberOfColumns', 'action']
+
+  mNewName: string
+  mNewNumberOfColumns: number
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -58,9 +61,9 @@ export class SettingsComponent implements OnInit {
   onAdd() {
 
     const group: Group = {
-      name: 'Neu',
+      name: this.mNewName,
       settings: {
-        numberOfColumns: 5,
+        numberOfColumns: this.mNewNumberOfColumns,
       },
       tiles: []
     }
@@ -87,7 +90,10 @@ export class SettingsComponent implements OnInit {
 
   private refreshTable() {
 
-    this.table.renderRows()
+    this.mTable.renderRows()
+
+    this.mNewName = ''
+    this.mNewNumberOfColumns = 1
 
   }
 

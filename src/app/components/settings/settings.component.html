@@ -5,44 +5,65 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
+
       <th mat-header-cell *matHeaderCellDef> Gruppe </th>
+
       <td mat-cell *matCellDef="let group">
         <mat-form-field>
           <input matInput placeholder = "" [(ngModel)] = "group.name">
         </mat-form-field>
       </td>
-      <td mat-footer-cell *matFooterCellDef>  </td>
+
+      <td mat-footer-cell *matFooterCellDef>
+        <mat-form-field>
+          <input matInput placeholder = "" [(ngModel)] = "mNewName">
+        </mat-form-field>
+      </td>
+
     </ng-container>
 
     <!-- numberOfColumns Column -->
     <ng-container matColumnDef="numberOfColumns">
+
       <th mat-header-cell *matHeaderCellDef> Anzahl der Spalten </th>
+
       <td mat-cell *matCellDef="let group">
         <mat-form-field>
           <input matInput placeholder = "" [(ngModel)] = "group.settings.numberOfColumns">
         </mat-form-field>
       </td>
-      <td mat-footer-cell *matFooterCellDef>  </td>
+
+      <td mat-footer-cell *matFooterCellDef>
+        <mat-form-field>
+          <input matInput placeholder = "" [(ngModel)] = "mNewNumberOfColumns">
+        </mat-form-field>
+      </td>
+
     </ng-container>
 
     <!-- numberOfColumns Column -->
     <ng-container matColumnDef="action">
+
       <th mat-header-cell *matHeaderCellDef> </th>
+
       <td mat-cell *matCellDef="let group">
         <button mat-icon-button (click)="onRemove(group)">
           <mat-icon svgIcon = "remove"></mat-icon>
         </button>
       </td>
+
       <td mat-footer-cell *matFooterCellDef>
         <button mat-icon-button (click)="onAdd()">
           <mat-icon svgIcon = "plus"></mat-icon>
         </button>
       </td>
+
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="mDisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: mDisplayedColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="mDisplayedColumns"></tr>
+
   </table>
 
 </div>
