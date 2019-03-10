@@ -29,7 +29,6 @@ import { TileDialogComponent } from './components/tile-dialog/tile-dialog.compon
 
 // Services
 import { GroupStorageService } from './services/group-storage.service'
-import { SettingRowComponent } from './components/setting-row/setting-row.component'
 import { TilePlusComponent } from './components/tile-plus/tile-plus.component'
 
 @NgModule({
@@ -40,7 +39,6 @@ import { TilePlusComponent } from './components/tile-plus/tile-plus.component'
     GroupComponent,
     SettingsComponent,
     TileDialogComponent,
-    SettingRowComponent,
     TilePlusComponent
   ],
   imports: [
