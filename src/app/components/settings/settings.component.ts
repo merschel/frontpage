@@ -50,7 +50,11 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.default()
+
+  }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -91,6 +95,12 @@ export class SettingsComponent implements OnInit {
   private refreshTable() {
 
     this.mTable.renderRows()
+
+    this.default()
+
+  }
+
+  private default() {
 
     this.mNewName = ''
     this.mNewNumberOfColumns = 5
