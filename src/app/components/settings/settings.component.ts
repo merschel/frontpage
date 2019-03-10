@@ -1,7 +1,7 @@
 import { Group } from './../../model/group'
 import { GroupStorageService } from './../../services/group-storage.service'
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core'
-import { MatTable } from '@angular/material';
+import { MatTable } from '@angular/material'
 
 @Component({
   selector: 'app-settings',
@@ -78,11 +78,31 @@ export class SettingsComponent implements OnInit {
 
   }
 
-  onRemove( group ) {
+  onRemove( group:  Group ) {
 
     this.groupStorage.remove( group )
 
     this.refreshTable()
+
+  }
+
+  onChangeNumberOfColumns( group: Group ) {
+
+    console.log(group)
+
+    // if ( group ) {
+
+
+
+    // } else {
+
+    //   if ( isNaN( this.mNewNumberOfColumns ) ) {
+
+
+
+    //   }
+
+    // }
 
   }
 
