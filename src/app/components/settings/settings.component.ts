@@ -93,7 +93,7 @@ export class SettingsComponent implements OnInit {
     this.mTable.renderRows()
 
     this.mNewName = ''
-    this.mNewNumberOfColumns = 1
+    this.mNewNumberOfColumns = 5
 
   }
 
