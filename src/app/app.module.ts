@@ -24,6 +24,7 @@ import { GroupComponent } from './components/group/group.component'
 import { SettingsComponent } from './components/settings/settings.component'
 import { TileDialogComponent } from './components/tile-dialog/tile-dialog.component'
 import { TilePlusComponent } from './components/tile-plus/tile-plus.component'
+import { YesNoDialogComponent } from './components/yes-no-dialog/yes-no-dialog.component';
 
 // Services
 import { GroupStorageService } from './services/group-storage.service'
@@ -41,7 +42,8 @@ import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive
     SettingsComponent,
     TileDialogComponent,
     TilePlusComponent,
-    IntegerKeyOnlyDirective
+    IntegerKeyOnlyDirective,
+    YesNoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive
   ],
   entryComponents: [
     TileDialogComponent,
+    YesNoDialogComponent
   ],
   bootstrap: [
     AppComponent

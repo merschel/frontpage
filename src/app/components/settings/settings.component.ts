@@ -1,7 +1,9 @@
+import { YesNoDialogInput, YesNoDialogComponent } from './../yes-no-dialog/yes-no-dialog.component';
 import { Group } from './../../model/group'
 import { GroupStorageService } from './../../services/group-storage.service'
-import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatTable } from '@angular/material'
+import { MatDialog } from '@angular/material'
 
 @Component({
   selector: 'app-settings',
@@ -41,8 +43,8 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor(public groupStorage: GroupStorageService,
-              private changeDetectorRefs: ChangeDetectorRef) { }
+  constructor( public groupStorage: GroupStorageService,
+               private dialog: MatDialog ) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -80,29 +82,26 @@ export class SettingsComponent implements OnInit {
 
   onRemove( group:  Group ) {
 
-    this.groupStorage.remove( group )
+    const yesNoDialogInput: YesNoDialogInput = {
 
-    this.refreshTable()
+      question: 'Soll die Gruppe ' + group.name + ' gelöscht werden?',
+      title: 'Löschen'
 
-  }
+    }
 
-  onChangeNumberOfColumns( group: Group ) {
+    const dialogRef = this.dialog.open( YesNoDialogComponent, { data: yesNoDialogInput } )
 
-    console.log(group)
+    dialogRef.afterClosed().subscribe( result => {
 
-    // if ( group ) {
+      if ( result ) {
 
+        this.groupStorage.remove( group )
 
+        this.refreshTable()
 
-    // } else {
+      }
 
-    //   if ( isNaN( this.mNewNumberOfColumns ) ) {
-
-
-
-    //   }
-
-    // }
+    })
 
   }
 

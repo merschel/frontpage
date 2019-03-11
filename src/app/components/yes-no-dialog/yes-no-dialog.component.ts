@@ -1,25 +1,23 @@
-import { YesNoDialogComponent, YesNoDialogInput } from './../yes-no-dialog/yes-no-dialog.component';
-import { GroupStorageService } from './../../services/group-storage.service'
-import { Component, OnInit, Input } from '@angular/core'
-import { Tile } from '../../model/tile'
-import { MatDialog } from '@angular/material'
-import { TileDialogComponent } from '../tile-dialog/tile-dialog.component'
-import { YesNoDialogComponent } from '../yes-no-dialog/yes-no-dialog.component';
+import { Component, OnInit, Inject } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+
+export interface YesNoDialogInput {
+  question: string,
+  title: string
+}
 
 @Component({
-  selector: 'app-tile',
-  templateUrl: './tile.component.html',
-  styleUrls: ['./tile.component.css']
+  selector: 'app-yes-no-dialog',
+  templateUrl: './yes-no-dialog.component.html',
+  styleUrls: ['./yes-no-dialog.component.css']
 })
-export class TileComponent implements OnInit {
+export class YesNoDialogComponent implements OnInit {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
           //   Input Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-
-  @Input() tile: Tile
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -39,8 +37,8 @@ export class TileComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor( private groupStorage: GroupStorageService,
-               private dialog: MatDialog ) {}
+  constructor(private dialogRef: MatDialogRef<YesNoDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public input: YesNoDialogInput) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -49,7 +47,6 @@ export class TileComponent implements OnInit {
   //////////////////////////////////////////////
 
   ngOnInit() {
-
   }
 
   //////////////////////////////////////////////
@@ -57,39 +54,6 @@ export class TileComponent implements OnInit {
            //    Public Functions    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-
-  onRemoveTile() {
-
-    const yesNoDialogInput: YesNoDialogInput = {
-      question: 'Soll der Link ' + this.tile.url + ' gelöscht werden?',
-      title: 'Löschen'
-    }
-
-    const dialogRef = this.dialog.open( YesNoDialogComponent, { data: yesNoDialogInput} )
-
-    dialogRef.afterClosed().subscribe( result =>  {
-
-      if ( result ) {
-
-        this.groupStorage.remove(this.tile)
-
-      }
-
-    })
-
-  }
-
-  onEditTile() {
-
-    const dialogRef = this.dialog.open( TileDialogComponent, { data: this.tile } )
-
-    dialogRef.afterClosed().subscribe( tile => {
-
-      this.groupStorage.onChange()
-
-    })
-
-  }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -102,6 +66,5 @@ export class TileComponent implements OnInit {
            //   Getter and Setter    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-
 
 }
