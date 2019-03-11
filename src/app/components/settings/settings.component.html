@@ -1,7 +1,7 @@
 
 <div *ngIf="groupStorage.groups | async as groups">
 
-  <table mat-table [dataSource]="groups">
+  <table class = "center" mat-table [dataSource]="groups">
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
