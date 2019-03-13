@@ -1,28 +1,36 @@
 
-<div>
 
-  <div>
+<mat-card class="tile">
 
-    <button mat-icon-button (click)="onRemoveTile()">
-        <mat-icon svgIcon = "remove">
+  <mat-card-content>
+
+    <div class="center">
+      <a mat-button [href]="tile.url">
+        {{tile.text}}
+      </a>
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+
+    <div class="tileButtons">
+
+      <button class="removeButton" mat-icon-button (click)="onRemoveTile()">
+        <mat-icon class="size-0_8" svgIcon = "remove">
           Entfernen
         </mat-icon>
-    </button>
+      </button>
 
-  </div>
+      <button class="tuneButton" mat-icon-button (click)="onEditTile()">
+        <mat-icon class="size-0_8" svgIcon = 'tune'>
+          Bearbeiten
+        </mat-icon>
+      </button>
 
-  <div>
+    </div>
 
-    <button mat-icon-button (click)="onEditTile()">
-        <mat-icon svgIcon = 'tune'></mat-icon>
-    </button>
 
-  </div>
+  </mat-card-actions>
 
-  <div>
-    <a [href]="tile.url" mat-button>
-      {{tile.text}}
-    </a>
-  </div>
-
-</div>
+</mat-card>

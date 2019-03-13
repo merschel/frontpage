@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatTableModule } from '@angular/material/table'
+import { MatCardModule } from '@angular/material/card'
 
 // Components
 import { AppComponent } from './app.component'
@@ -58,7 +59,8 @@ import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ],
   providers: [
     GroupStorageService,

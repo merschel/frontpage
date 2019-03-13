@@ -1,10 +1,9 @@
-import { YesNoDialogComponent, YesNoDialogInput } from './../yes-no-dialog/yes-no-dialog.component';
+import { YesNoDialogComponent, YesNoDialogInput } from './../yes-no-dialog/yes-no-dialog.component'
 import { GroupStorageService } from './../../services/group-storage.service'
 import { Component, OnInit, Input } from '@angular/core'
 import { Tile } from '../../model/tile'
 import { MatDialog } from '@angular/material'
 import { TileDialogComponent } from '../tile-dialog/tile-dialog.component'
-import { YesNoDialogComponent } from '../yes-no-dialog/yes-no-dialog.component';
 
 @Component({
   selector: 'app-tile',
