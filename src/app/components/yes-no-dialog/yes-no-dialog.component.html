@@ -9,15 +9,15 @@
 
 <mat-dialog-actions>
 
-  <button mat-icon-button [mat-dialog-close]="true">
-    <mat-icon svgIcon = "check">
-      Ok
+  <button class = "noButton" mat-icon-button mat-dialog-close>
+    <mat-icon svgIcon = "close">
+      Abbrechen
     </mat-icon>
   </button>
 
-  <button mat-icon-button mat-dialog-close>
-    <mat-icon svgIcon = "close">
-      Abbrechen
+  <button class = "yesButton" mat-icon-button [mat-dialog-close]="true">
+    <mat-icon svgIcon = "check">
+      Ok
     </mat-icon>
   </button>
 
