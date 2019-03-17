@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import * as UrlParser from 'url-parse'
+import * as IsIp from 'is-ip'
 
 @Injectable({
   providedIn: 'root'
@@ -99,19 +100,45 @@ export class UrlService {
 
     let urlParser = new UrlParser(this.mUrl)
 
-    this.mProtocol = urlParser.protocol
-    this.mSlashes  = urlParser.slashes
-    this.mAuth     = urlParser.auth
-    this.mUsername = urlParser.username
-    this.mPassword = urlParser.password
-    this.mHost     = urlParser.host
-    this.mHostname = urlParser.hostname
-    this.mPort     = urlParser.port
-    this.mPathname = urlParser.pathname
-    this.mQuery    = urlParser.query
-    this.mHash     = urlParser.hash
-    this.mHref     = urlParser.href
-    this.mOrigin   = urlParser.origin
+    console.log(IsIp( this.mUrl ))
+
+    if ( IsIp( this.mUrl ) ) {
+
+      console.log('is IP')
+
+      this.mProtocol = urlParser.protocol
+      this.mSlashes  = urlParser.slashes
+      this.mAuth     = urlParser.auth
+      this.mUsername = urlParser.username
+      this.mPassword = urlParser.password
+      this.mHost     = urlParser.pathname
+      this.mHostname = urlParser.pathname
+      this.mPort     = urlParser.port
+      this.mPathname = urlParser.pathname
+      this.mQuery    = urlParser.query
+      this.mHash     = urlParser.hash
+      this.mHref     = urlParser.href
+      this.mOrigin   = urlParser.origin
+
+    } else {
+
+      this.mProtocol = urlParser.protocol
+      this.mSlashes  = urlParser.slashes
+      this.mAuth     = urlParser.auth
+      this.mUsername = urlParser.username
+      this.mPassword = urlParser.password
+      this.mHost     = urlParser.host
+      this.mHostname = urlParser.hostname
+      this.mPort     = urlParser.port
+      this.mPathname = urlParser.pathname
+      this.mQuery    = urlParser.query
+      this.mHash     = urlParser.hash
+      this.mHref     = urlParser.href
+      this.mOrigin   = urlParser.origin
+
+    }
+
+    this.log()
 
   }
 

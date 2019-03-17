@@ -23,6 +23,7 @@
     "@angular/router": "~7.2.0",
     "@mdi/font": "^3.5.95",
     "core-js": "^2.5.4",
+    "is-ip": "^2.0.0",
     "material-design-icons": "^3.0.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

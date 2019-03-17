@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatTableModule } from '@angular/material/table'
 import { MatCardModule } from '@angular/material/card'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
 // Components
 import { AppComponent } from './app.component'
@@ -60,7 +61,8 @@ import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive
     MatDialogModule,
     MatExpansionModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatAutocompleteModule
   ],
   providers: [
     GroupStorageService,

@@ -2,7 +2,7 @@ import { UrlService } from 'src/app/services/url.service'
 import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
 import { Tile } from '../../model/tile'
-import { FormGroup, FormBuilder } from '@angular/forms'
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-tile-dialog',
@@ -31,6 +31,8 @@ export class TileDialogComponent implements OnInit {
   //////////////////////////////////////////////
 
   mForm: FormGroup
+  mSchemeControl: FormControl
+  mSchemes = ['https:', 'http:', '-']
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -66,7 +68,15 @@ export class TileDialogComponent implements OnInit {
 
     this.tile.text = this.mForm.value.text
 
-    this.dialogRef.close( this.tile )
+    if ( this.tile.url || this.tile.text ) {
+
+      this.dialogRef.close( this.tile )
+
+    } else {
+
+      this.dialogRef.close()
+
+    }
 
   }
 
@@ -78,10 +88,39 @@ export class TileDialogComponent implements OnInit {
 
   private setValues() {
 
-    this.mForm = this.formBuilder.group({
-      url: this.tile.url ? this.tile.url : '',
-      text: this.tile.text ? this.tile.text : ''
-    })
+    this.mSchemeControl = new FormControl()
+
+    if ( this.tile.url === '' ) {
+
+      this.mSchemeControl.setValue(this.mSchemes[0])
+
+      this.mForm = this.formBuilder.group({
+
+        url: '',
+        text: ''
+
+      })
+
+    } else {
+
+      this.urlService.url = this.tile.url
+
+      this.mSchemeControl.setValue( this.urlService.protocol )
+
+      this.mForm = this.formBuilder.group({
+
+        url: this.urlService.hostname,
+        text: this.tile.text
+
+      })
+
+    }
+
+
+    // this.mForm = this.formBuilder.group({
+    //   url: this.tile.url ? this.tile.url : '',
+    //   text: this.tile.text ? this.tile.text : ''
+    // })
 
   }
 
@@ -90,6 +129,16 @@ export class TileDialogComponent implements OnInit {
     this.mForm.get('url').valueChanges.subscribe( url => {
 
       this.urlService.url = url
+
+      if ( this.urlService.protocol ) {
+
+        this.mSchemeControl.setValue(this.urlService.protocol)
+
+      } else {
+
+        this.urlService.url = this.mSchemeControl.value + url
+
+      }
 
       if ( this.urlService.hostname !== 'localhost' ) {
 
