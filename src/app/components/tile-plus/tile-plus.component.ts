@@ -4,6 +4,7 @@ import { Group } from './../../model/group'
 import { GroupStorageService } from './../../services/group-storage.service'
 import { Component, OnInit, Input } from '@angular/core'
 import { MatDialog } from '@angular/material'
+import { Scheme } from 'src/app/model/scheme'
 
 @Component({
   selector: 'app-tile-plus',
@@ -58,7 +59,7 @@ constructor( private dialog: MatDialog,
 
   onAddTile() {
 
-    let empty: Tile = { url: '', text: '' }
+    let empty: Tile = { url: '', text: '', scheme: Scheme.default }
 
     const dialogRef = this.dialog.open( TileDialogComponent, { data: empty } )
 

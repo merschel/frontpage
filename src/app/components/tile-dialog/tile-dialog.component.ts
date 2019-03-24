@@ -1,3 +1,4 @@
+import { Scheme } from './../../model/scheme'
 import { UrlService } from 'src/app/services/url.service'
 import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
@@ -32,7 +33,7 @@ export class TileDialogComponent implements OnInit {
 
   mForm: FormGroup
   mSchemeControl: FormControl
-  mSchemes = ['https:', 'http:', '-']
+  mSchemes = Scheme
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -52,8 +53,13 @@ export class TileDialogComponent implements OnInit {
   //////////////////////////////////////////////
 
   ngOnInit() {
+
     this.setValues()
-    this.onUrlChange()
+
+    if ( this.tile.url === '' ) {
+      this.onPictureUrlChange()
+    }
+
   }
 
   //////////////////////////////////////////////
@@ -67,6 +73,10 @@ export class TileDialogComponent implements OnInit {
     this.tile.url = this.mForm.value.url
 
     this.tile.text = this.mForm.value.text
+
+    this.tile.pictureUrl = this.mForm.value.pictureUrl
+
+    this.tile.scheme = this.mSchemeControl.value
 
     if ( this.tile.url || this.tile.text ) {
 
@@ -92,57 +102,70 @@ export class TileDialogComponent implements OnInit {
 
     if ( this.tile.url === '' ) {
 
-      this.mSchemeControl.setValue(this.mSchemes[0])
+      this.mSchemeControl.setValue( Scheme.default )
 
       this.mForm = this.formBuilder.group({
 
-        url: '',
-        text: ''
+        pictureUrl: '',
+        url:        '',
+        text:       ''
 
       })
 
     } else {
 
-      this.urlService.url = this.tile.url
-
-      this.mSchemeControl.setValue( this.urlService.protocol )
+      this.mSchemeControl.setValue( this.tile.scheme )
 
       this.mForm = this.formBuilder.group({
 
-        url: this.urlService.hostname,
-        text: this.tile.text
+        pictureUrl: this.tile.pictureUrl,
+        url:        this.tile.url,
+        text:       this.tile.text,
 
       })
 
     }
 
-
-    // this.mForm = this.formBuilder.group({
-    //   url: this.tile.url ? this.tile.url : '',
-    //   text: this.tile.text ? this.tile.text : ''
-    // })
-
   }
 
-  private onUrlChange() {
+  // private onUrlChange() {
 
-    this.mForm.get('url').valueChanges.subscribe( url => {
+  //   this.mForm.get('url').valueChanges.subscribe( url => {
 
-      this.urlService.url = url
+  //     this.urlService.url = url
 
-      if ( this.urlService.protocol ) {
+  //     if ( this.urlService.protocol ) {
 
-        this.mSchemeControl.setValue(this.urlService.protocol)
+  //       this.mSchemeControl.setValue(this.urlService.protocol)
 
-      } else {
+  //     } else {
 
-        this.urlService.url = this.mSchemeControl.value + url
+  //       this.urlService.url = this.mSchemeControl.value + url
 
-      }
+  //     }
+
+  //     if ( this.urlService.hostname !== 'localhost' ) {
+
+  //       this.mForm.get('text').setValue(this.urlService.hostname)
+
+  //     }
+
+  //   })
+
+  // }
+
+  private onPictureUrlChange() {
+
+    this.mForm.get('pictureUrl').valueChanges.subscribe( pictureUrl => {
+
+      this.urlService.url = pictureUrl
 
       if ( this.urlService.hostname !== 'localhost' ) {
 
+        this.mForm.get('url').setValue(this.urlService.hostname)
         this.mForm.get('text').setValue(this.urlService.hostname)
+
+        this.mSchemeControl.setValue(this.urlService.protocol)
 
       }
 

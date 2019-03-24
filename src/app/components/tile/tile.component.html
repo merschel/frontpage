@@ -5,12 +5,18 @@
   <mat-card-content>
 
     <div class="center">
-      <a mat-button [href]="tile.url">
+
+      <a *ngIf="!tile.pictureUrl" mat-button [href]="mHref">
         {{tile.text}}
       </a>
+
     </div>
 
   </mat-card-content>
+
+  <a *ngIf="tile.pictureUrl" [href]="mHref">
+    <img src={{tile.pictureUrl}} class="picture" alt={{tile.text}}>
+  </a>
 
   <mat-card-actions>
 
@@ -34,3 +40,9 @@
   </mat-card-actions>
 
 </mat-card>
+
+<ng-template #picture>
+    <a [href]="mHref">
+      <img src={{tile.pictureUrl}} class="picture" alt={{tile.text}}>
+    </a>
+</ng-template>

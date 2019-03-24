@@ -1,3 +1,4 @@
+
 // Modules
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
@@ -17,6 +18,7 @@ import { MatExpansionModule } from '@angular/material/expansion'
 import { MatTableModule } from '@angular/material/table'
 import { MatCardModule } from '@angular/material/card'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 // Components
 import { AppComponent } from './app.component'
@@ -26,14 +28,16 @@ import { GroupComponent } from './components/group/group.component'
 import { SettingsComponent } from './components/settings/settings.component'
 import { TileDialogComponent } from './components/tile-dialog/tile-dialog.component'
 import { TilePlusComponent } from './components/tile-plus/tile-plus.component'
-import { YesNoDialogComponent } from './components/yes-no-dialog/yes-no-dialog.component';
+import { YesNoDialogComponent } from './components/yes-no-dialog/yes-no-dialog.component'
 
 // Services
 import { GroupStorageService } from './services/group-storage.service'
 
 // Directives
-import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive';
+import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive'
 
+// Pipes
+import { KeysPipe } from './pipes/keys'
 
 @NgModule({
   declarations: [
@@ -45,7 +49,8 @@ import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive
     TileDialogComponent,
     TilePlusComponent,
     IntegerKeyOnlyDirective,
-    YesNoDialogComponent
+    YesNoDialogComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,8 @@ import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive
     MatExpansionModule,
     MatTableModule,
     MatCardModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSlideToggleModule
   ],
   providers: [
     GroupStorageService,
