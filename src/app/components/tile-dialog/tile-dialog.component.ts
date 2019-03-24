@@ -34,6 +34,7 @@ export class TileDialogComponent implements OnInit {
   mForm: FormGroup
   mSchemeControl: FormControl
   mSchemes = Scheme
+  mHeadline: string
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -53,6 +54,8 @@ export class TileDialogComponent implements OnInit {
   //////////////////////////////////////////////
 
   ngOnInit() {
+
+    this.mHeadline = this.tile.url === '' ? 'Link Hinzufügen' : 'Einstellungen'
 
     this.setValues()
 

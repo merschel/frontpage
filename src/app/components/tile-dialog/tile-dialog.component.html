@@ -1,16 +1,18 @@
 <form [formGroup] = "mForm" (ngSubmit) = "onSubmit()">
 
-  <h1 mat-dialog-content> Seite Hinzufügen </h1>
+  <h1 mat-dialog-title class="headline"> {{mHeadline}} </h1>
+
+  <mat-divider></mat-divider>
 
   <mat-dialog-content>
 
-    <mat-form-field>
+    <mat-form-field class="pictureUrl">
       <input matInput placeholder = "Bild - Url" formControlName = "pictureUrl">
     </mat-form-field>
 
     <br>
 
-    <mat-form-field>
+    <mat-form-field class="scheme">
 
       <input matInput
              type="text"
@@ -27,17 +29,19 @@
 
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="url">
       <input matInput placeholder = "Url" formControlName = "url">
     </mat-form-field>
 
     <br>
 
-    <mat-form-field>
+    <mat-form-field class="text">
       <input matInput placeholder = "Text" formControlName = "text">
     </mat-form-field>
 
   </mat-dialog-content>
+
+  <mat-divider></mat-divider>
 
   <mat-dialog-actions>
 

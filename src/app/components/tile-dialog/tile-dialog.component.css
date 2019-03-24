@@ -5,3 +5,25 @@
 .noButton {
   margin-right: auto;
 }
+
+.pictureUrl {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.url {
+  width: 334px;
+  margin-left: 16px;
+}
+
+.scheme {
+  width: 50px;
+}
+
+.text {
+  width: 100%;
+}
+
+.headline {
+  width: 400px;
+}

@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatCardModule } from '@angular/material/card'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatDividerModule } from '@angular/material/divider'
 
 // Components
 import { AppComponent } from './app.component'
@@ -68,7 +69,8 @@ import { KeysPipe } from './pipes/keys'
     MatTableModule,
     MatCardModule,
     MatAutocompleteModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDividerModule
   ],
   providers: [
     GroupStorageService,
