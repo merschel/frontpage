@@ -2,6 +2,7 @@ import { Tile } from './../model/tile'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
 import { Injectable } from '@angular/core'
 import { Group } from './../model/group'
+import { saveAs } from 'file-saver'
 
 @Injectable({
   providedIn: 'root'
@@ -141,6 +142,17 @@ export class GroupStorageService {
       // TODO feedback
 
     })
+
+  }
+
+  export() {
+
+    saveAs(
+      new Blob(
+        [JSON.stringify(this.mGroups.value)],
+        {type: 'application/json'}
+      ), 'export.json'
+    )
 
   }
 

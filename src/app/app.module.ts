@@ -38,7 +38,8 @@ import { GroupStorageService } from './services/group-storage.service'
 import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive'
 
 // Pipes
-import { KeysPipe } from './pipes/keys'
+import { KeysPipe } from './pipes/keys';
+import { ActionBarComponent } from './components/action-bar/action-bar.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { KeysPipe } from './pipes/keys'
     TilePlusComponent,
     IntegerKeyOnlyDirective,
     YesNoDialogComponent,
-    KeysPipe
+    KeysPipe,
+    ActionBarComponent
   ],
   imports: [
     BrowserModule,

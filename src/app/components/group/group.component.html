@@ -1,20 +1,22 @@
 
-  <mat-grid-list [cols] = "group.settings.numberOfColumns">
+<app-action-bar></app-action-bar>
 
-    <!-- Tile List -->
+<mat-grid-list [cols] = "group.settings.numberOfColumns">
 
-    <mat-grid-tile *ngFor = "let tile of group.tiles">
+  <!-- Tile List -->
 
-      <app-tile [tile] = "tile"></app-tile>
+  <mat-grid-tile *ngFor = "let tile of group.tiles">
 
-    </mat-grid-tile>
+    <app-tile [tile] = "tile"></app-tile>
 
-    <!-- Add Tile -->
+  </mat-grid-tile>
 
-    <mat-grid-tile>
+  <!-- Add Tile -->
 
-      <app-tile-plus [group] = "group"></app-tile-plus>
+  <mat-grid-tile>
 
-    </mat-grid-tile>
+    <app-tile-plus [group] = "group"></app-tile-plus>
 
-  </mat-grid-list>
+  </mat-grid-tile>
+
+</mat-grid-list>
