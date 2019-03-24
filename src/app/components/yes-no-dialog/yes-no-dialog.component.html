@@ -1,24 +1,33 @@
 
-<h2 mat-dialog-title>
-  {{input.title}}
-</h2>
+<form>
 
-<mat-dialog-content>
-  {{input.question}}
-</mat-dialog-content>
+  <h1 mat-dialog-title>
+    {{input.title}}
+  </h1>
 
-<mat-dialog-actions>
+  <mat-divider></mat-divider>
 
-  <button class = "noButton" mat-icon-button mat-dialog-close>
-    <mat-icon svgIcon = "close">
-      Abbrechen
-    </mat-icon>
-  </button>
+  <mat-dialog-content class="question">
+    {{input.question}}
+  </mat-dialog-content>
 
-  <button class = "yesButton" mat-icon-button [mat-dialog-close]="true">
-    <mat-icon svgIcon = "check">
-      Ok
-    </mat-icon>
-  </button>
+  <mat-divider></mat-divider>
 
-</mat-dialog-actions>
+  <mat-dialog-actions>
+
+    <button class = "noButton" mat-icon-button mat-dialog-close>
+      <mat-icon svgIcon = "close">
+        Abbrechen
+      </mat-icon>
+    </button>
+
+    <button class = "yesButton" mat-icon-button [mat-dialog-close]="true">
+      <mat-icon svgIcon = "check">
+        Ok
+      </mat-icon>
+    </button>
+
+  </mat-dialog-actions>
+
+</form>
+
