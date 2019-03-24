@@ -1,5 +1,6 @@
 export interface Tile {
   url: string
-  picture?: any
+  pictureUrl?: any
   text: string
+  scheme: string
 }

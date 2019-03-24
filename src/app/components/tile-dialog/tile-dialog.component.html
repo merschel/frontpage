@@ -5,20 +5,26 @@
   <mat-dialog-content>
 
     <mat-form-field>
+      <input matInput placeholder = "Bild - Url" formControlName = "pictureUrl">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
 
       <input matInput
              type="text"
              placeholder="Schema"
-             tabindex = "-1"
              [formControl]="mSchemeControl"
              [matAutocomplete]="auto"
       >
 
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let scheme of mSchemes" [value]="scheme">
+        <mat-option *ngFor="let scheme of mSchemes | keys: 'true'" [value]="scheme">
           {{scheme}}
         </mat-option>
       </mat-autocomplete>
+
     </mat-form-field>
 
     <mat-form-field>
