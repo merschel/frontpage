@@ -24,6 +24,7 @@
     "@mdi/font": "^3.5.95",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.1",
+    "hammerjs": "^2.0.8",
     "is-ip": "^2.0.0",
     "material-design-icons": "^3.0.1",
     "rxjs": "~6.3.3",

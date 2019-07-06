@@ -38,7 +38,7 @@ import { GroupStorageService } from './services/group-storage.service'
 import { IntegerKeyOnlyDirective } from './directives/numeric-key-only.directive'
 
 // Pipes
-import { KeysPipe } from './pipes/keys';
+import { KeysPipe } from './pipes/keys'
 import { ActionBarComponent } from './components/action-bar/action-bar.component'
 
 @NgModule({
