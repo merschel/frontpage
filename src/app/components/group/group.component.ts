@@ -1,5 +1,6 @@
 import { Group } from './../../model/group'
 import { Component, OnInit, Input } from '@angular/core'
+import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-group',
@@ -28,6 +29,8 @@ export class GroupComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
+  mRegularDistribution
+
   //////////////////////////////////////////////
   //////////////////////////////////////////////
             //    Constructor    //
@@ -42,7 +45,11 @@ export class GroupComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.mRegularDistribution = 100 / this.group.settings.numberOfColumns + '%'
+    console.log(this.group.settings.numberOfColumns)
+    console.log(this.mRegularDistribution)
+  }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////

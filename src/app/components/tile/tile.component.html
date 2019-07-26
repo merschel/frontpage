@@ -1,28 +1,57 @@
 
+<mat-card fxLayout="row">
 
-<mat-card class="tile">
+  <a mat-button [href]="mHref" flFlex="80%">
+    {{tile.text}}
+  </a>
 
-  <mat-card-content>
+  <div class="tileButtons" flFlex="20%" fxLayout="row">
 
-    <div class="center">
-      <a mat-button [href]="mHref">
-        {{tile.text}}
+    <button  mat-icon-button (click)="onRemoveTile()">
+      <mat-icon class="size-0_8" svgIcon = "remove">
+        Entfernen
+      </mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="onEditTile()">
+      <mat-icon class="size-0_8" svgIcon = 'tune'>
+        Bearbeiten
+      </mat-icon>
+    </button>
+
+  </div>
+
+</mat-card>
+
+
+
+
+
+
+
+<!-- <div fxLayout="column"> -->
+
+  <!-- <mat-card-content>
+
+    <div *ngIf="tile.pictureUrl; else buttonText">
+      <a [href]="mHref">
+        <img mat-card-image [src]="tile.pictureUrl">
       </a>
     </div>
 
   </mat-card-content>
 
-  <mat-card-actions>
+  <mat-card-actions fxLayout="row">
 
-    <div class="tileButtons">
+    <div>
 
-      <button class="removeButton" mat-icon-button (click)="onRemoveTile()">
+      <button flFlex="10%" mat-icon-button (click)="onRemoveTile()">
         <mat-icon class="size-0_8" svgIcon = "remove">
           Entfernen
         </mat-icon>
       </button>
 
-      <button class="tuneButton" mat-icon-button (click)="onEditTile()">
+      <button flFlex="90%" mat-icon-button (click)="onEditTile()">
         <mat-icon class="size-0_8" svgIcon = 'tune'>
           Bearbeiten
         </mat-icon>
@@ -30,7 +59,27 @@
 
     </div>
 
+  </mat-card-actions> -->
 
-  </mat-card-actions>
+  <!-- <div fxLayout.gt-xs="row" fxLayout.xs="column">
 
-</mat-card>
+
+
+
+
+
+  </div>
+
+  <span fxFlex="50%">
+    <a [href]="mHref">
+      <img mat-card-image [src]="tile.pictureUrl">
+    </a>
+  </span>
+
+</div>
+
+<ng-template #buttonText>
+    <div class="center">
+
+    </div>
+</ng-template> -->

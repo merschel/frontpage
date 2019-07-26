@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 // Material Imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -61,6 +62,7 @@ import { ActionBarComponent } from './components/action-bar/action-bar.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FlexLayoutModule,
     MatTabsModule,
     MatGridListModule,
     MatInputModule,
