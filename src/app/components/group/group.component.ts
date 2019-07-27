@@ -29,7 +29,8 @@ export class GroupComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  mRegularDistribution
+  mRegularDistribution: String
+  mGap: String
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -46,9 +47,12 @@ export class GroupComponent implements OnInit {
   //////////////////////////////////////////////
 
   ngOnInit() {
-    this.mRegularDistribution = 100 / this.group.settings.numberOfColumns + '%'
-    console.log(this.group.settings.numberOfColumns)
-    console.log(this.mRegularDistribution)
+
+    let gap = 0.5 // TODO als Eigenschaft mitgeben
+
+    this.mGap = gap + '%'
+    this.mRegularDistribution = 100 / this.group.settings.numberOfColumns - gap + '%'
+
   }
 
   //////////////////////////////////////////////
