@@ -1,17 +1,13 @@
-
-.center {
-  text-align: center;
-  /* margin: auto; */
-}
-
 .tile {
-  height: 100px;
-  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .tileButtons {
   transition: 0s;
   visibility: hidden;
+  height: 36px;
+  position: absolute;
+  right: 16px;
 }
 
 .tile:hover .tileButtons {
@@ -20,35 +16,15 @@
 }
 
 .removeButton {
-  position: absolute;
+  top: -32px;
   left: 16px;
 }
 
 .tuneButton {
-  position: absolute;
-  right: 16px;
+  top: -16px;
+  left: 16px;
 }
 
 .size-0_8 {
-  transform: scale(0.8)
+  transform: scale(0.6)
 }
-/* div {
-
-}
-
-a:hover + div {
-
-} */
-/*
-<a>Hover over me!</a>
-<div>Stuff shown on hover</div> */
-
-/*
-.myLinks{
-  display:none;
-}
-
-.comment:hover > .myLinks {
-  display: block;
-} */
-

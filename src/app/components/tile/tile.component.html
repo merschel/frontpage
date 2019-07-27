@@ -1,36 +1,24 @@
 
+<mat-card fxLayout="row" class="tile" fxLayoutAlign="start">
 
-<mat-card class="tile">
+  <a mat-button [href]="mHref" flFlex="80%">
+    {{tile.text}}
+  </a>
 
-  <mat-card-content>
+  <div class="tileButtons" flFlex="20%" fxLayout="column">
 
-    <div class="center">
-      <a mat-button [href]="mHref">
-        {{tile.text}}
-      </a>
-    </div>
+    <button class="tuneButton" mat-icon-button (click)="onEditTile()">
+      <mat-icon class="size-0_8" svgIcon = 'tune'>
+        Bearbeiten
+      </mat-icon>
+    </button>
 
-  </mat-card-content>
+    <button class="removeButton" mat-icon-button (click)="onRemoveTile()">
+      <mat-icon class="size-0_8" svgIcon = "remove">
+        Entfernen
+      </mat-icon>
+    </button>
 
-  <mat-card-actions>
-
-    <div class="tileButtons">
-
-      <button class="removeButton" mat-icon-button (click)="onRemoveTile()">
-        <mat-icon class="size-0_8" svgIcon = "remove">
-          Entfernen
-        </mat-icon>
-      </button>
-
-      <button class="tuneButton" mat-icon-button (click)="onEditTile()">
-        <mat-icon class="size-0_8" svgIcon = 'tune'>
-          Bearbeiten
-        </mat-icon>
-      </button>
-
-    </div>
-
-
-  </mat-card-actions>
+  </div>
 
 </mat-card>

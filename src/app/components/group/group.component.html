@@ -1,22 +1,14 @@
 
 <app-action-bar></app-action-bar>
 
-<mat-grid-list [cols] = "group.settings.numberOfColumns">
+<div fxLayout="row wrap" fxLayout.lt-sm="column" [fxLayoutGap]="mGap" fxLayoutAlign="start">
 
-  <!-- Tile List -->
+    <div [fxFlex]="mRegularDistribution" fxFlex.lt-md="100%" *ngFor="let tile of group.tiles">
 
-  <mat-grid-tile *ngFor = "let tile of group.tiles">
+      <app-tile [tile]="tile"></app-tile>
 
-    <app-tile [tile] = "tile"></app-tile>
+    </div>
 
-  </mat-grid-tile>
+    <app-tile-plus [group] = "group" [fxFlex]="mRegularDistribution" fxFlex.lt-md="100%"></app-tile-plus>
 
-  <!-- Add Tile -->
-
-  <mat-grid-tile>
-
-    <app-tile-plus [group] = "group"></app-tile-plus>
-
-  </mat-grid-tile>
-
-</mat-grid-list>
+</div>
