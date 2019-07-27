@@ -10,7 +10,7 @@
 
       <td mat-cell *matCellDef="let group">
         <mat-form-field>
-          <input matInput placeholder = "" [(ngModel)] = "group.name">
+          <input matInput placeholder = "" [(ngModel)] = "group.name" (ngModelChange)="onChange()">
         </mat-form-field>
       </td>
 
@@ -29,7 +29,7 @@
 
       <td mat-cell *matCellDef="let group">
         <mat-form-field>
-          <input matInput appIntegerKeyOnly placeholder = "" type = "number" min = "1" max = "10" steps = "1" [(ngModel)] = "group.settings.numberOfColumns">
+          <input matInput appIntegerKeyOnly placeholder = "" type = "number" min = "1" max = "10" steps = "1" [(ngModel)] = "group.settings.numberOfColumns" (ngModelChange)="onChange()">
         </mat-form-field>
       </td>
 

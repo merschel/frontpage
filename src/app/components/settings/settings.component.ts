@@ -1,4 +1,4 @@
-import { YesNoDialogInput, YesNoDialogComponent } from './../yes-no-dialog/yes-no-dialog.component';
+import { YesNoDialogInput, YesNoDialogComponent } from './../yes-no-dialog/yes-no-dialog.component'
 import { Group } from './../../model/group'
 import { GroupStorageService } from './../../services/group-storage.service'
 import { Component, OnInit, ViewChild } from '@angular/core'
@@ -80,7 +80,7 @@ export class SettingsComponent implements OnInit {
 
   }
 
-  onRemove( group:  Group ) {
+  onRemove( group: Group ) {
 
     const yesNoDialogInput: YesNoDialogInput = {
 
@@ -102,6 +102,12 @@ export class SettingsComponent implements OnInit {
       }
 
     })
+
+  }
+
+  onChange() {
+
+    this.groupStorage.onChange()
 
   }
 

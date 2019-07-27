@@ -1,0 +1,3 @@
+interface DoCheck {
+  ngDoCheck(): void
+}

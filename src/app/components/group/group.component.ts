@@ -1,13 +1,12 @@
 import { Group } from './../../model/group'
 import { Component, OnInit, Input } from '@angular/core'
-import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
   styleUrls: ['./group.component.css']
 })
-export class GroupComponent implements OnInit {
+export class GroupComponent implements OnInit, DoCheck {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -32,6 +31,8 @@ export class GroupComponent implements OnInit {
   mRegularDistribution: String
   mGap: String
 
+  private mNumberOfColumns = 0
+
   //////////////////////////////////////////////
   //////////////////////////////////////////////
             //    Constructor    //
@@ -46,12 +47,18 @@ export class GroupComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngDoCheck() {
 
     let gap = 0.5 // TODO als Eigenschaft mitgeben
 
     this.mGap = gap + '%'
-    this.mRegularDistribution = 100 / this.group.settings.numberOfColumns - gap + '%'
+
+    if ( this.mNumberOfColumns !== this.group.settings.numberOfColumns ) {
+      this.mNumberOfColumns = this.group.settings.numberOfColumns
+      this.mRegularDistribution = 100 / this.mNumberOfColumns - gap + '%'
+    }
 
   }
 
