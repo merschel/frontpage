@@ -2,6 +2,7 @@ import { Tile } from './../model/tile'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
 import { Injectable } from '@angular/core'
 import { Group } from './../model/group'
+import { DomSanitizer } from '@angular/platform-browser'
 import { saveAs } from 'file-saver'
 
 @Injectable({
@@ -153,6 +154,92 @@ export class GroupStorageService {
         {type: 'application/json'}
       ), 'export.json'
     )
+
+  }
+
+  import(file: File): Promise<void> {
+
+    return new Promise( (resolve, reject) => {
+
+      const extractApplicationFrom = (result: string): string => {
+
+        const idxSlash = result.indexOf( '/' )
+
+        const idxSemicolon = result.indexOf( ';' )
+
+        if ( idxSlash === -1 || idxSemicolon === -1 ) {
+
+          reject()
+
+        }
+
+        const application = result.substring( idxSlash + 1, idxSemicolon )
+
+        return application
+
+      }
+
+      const extractBase64From = (result: string): string => {
+
+        const idxKomma = result.indexOf( ',' )
+
+        if (idxKomma === -1) {
+
+          reject()
+
+        }
+
+        const base64 = result.substr( idxKomma + 1 )
+
+        return base64
+
+      }
+
+      const reader = new FileReader()
+
+      const extractData = () => {
+
+        const result = reader.result as string
+
+        const application = extractApplicationFrom( result )
+
+        if ( application !== 'json' ) {
+
+          reject()
+
+        }
+
+        const base64 = extractBase64From( result )
+
+        try {
+
+          const json = JSON.parse( atob( base64 ) )
+
+          this.mGroups.next(json)
+
+          this.save().then( () => {
+
+            resolve()
+
+          }).catch ( error => {
+
+            reject(error)
+
+          })
+
+        } catch (error) {
+
+          reject(error)
+
+        }
+
+      }
+
+      reader.onload = extractData
+
+      reader.readAsDataURL(file)
+
+    })
 
   }
 

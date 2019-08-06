@@ -8,3 +8,8 @@
   position: absolute;
   right: 0px;
 }
+
+.import-button {
+  position: absolute;
+  right: 32px;
+}

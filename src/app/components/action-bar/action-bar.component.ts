@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core'
 import { GroupStorageService } from './../../services/group-storage.service'
-
+import { MatDialog } from '@angular/material'
+import { DropZoneDialogComponent } from './../drop-zone-dialog/drop-zone-dialog.component'
 @Component({
   selector: 'app-action-bar',
   templateUrl: './action-bar.component.html',
   styleUrls: ['./action-bar.component.css']
 })
 export class ActionBarComponent implements OnInit {
-
-
-
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -35,7 +33,8 @@ export class ActionBarComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor(private groupStorage: GroupStorageService) { }
+  constructor(private groupStorage: GroupStorageService,
+              private dialog: MatDialog) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -53,7 +52,14 @@ export class ActionBarComponent implements OnInit {
   //////////////////////////////////////////////
 
   onExport() {
+    console.log('Di')
     this.groupStorage.export()
+  }
+
+  onImport() {
+    console.log('Mo')
+    let dialogRef = this.dialog.open(DropZoneDialogComponent)
+
   }
 
   //////////////////////////////////////////////

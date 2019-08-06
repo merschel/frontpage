@@ -29,7 +29,7 @@ export class AppComponent {
 
     this.matIconRegistry.addSvgIcon(
       'export',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/export.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/package-up.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
@@ -45,6 +45,21 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon(
       'tune',
       sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/tune.svg')
+    )
+
+    this.matIconRegistry.addSvgIcon(
+      'import',
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/package-down.svg')
+    )
+
+    this.matIconRegistry.addSvgIcon(
+      'file',
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/file.svg')
+    )
+
+    this.matIconRegistry.addSvgIcon(
+      'file-hidden',
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/file-hidden.svg')
     )
 
   }
