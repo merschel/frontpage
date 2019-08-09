@@ -2,7 +2,6 @@ import { Tile } from './../model/tile'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
 import { Injectable } from '@angular/core'
 import { Group } from './../model/group'
-import { DomSanitizer } from '@angular/platform-browser'
 import { saveAs } from 'file-saver'
 
 @Injectable({
@@ -157,89 +156,11 @@ export class GroupStorageService {
 
   }
 
-  import(file: File): Promise<void> {
+  import(groups: [Group]): Promise<void> {
 
-    return new Promise( (resolve, reject) => {
+    this.mGroups.next(groups)
 
-      const extractApplicationFrom = (result: string): string => {
-
-        const idxSlash = result.indexOf( '/' )
-
-        const idxSemicolon = result.indexOf( ';' )
-
-        if ( idxSlash === -1 || idxSemicolon === -1 ) {
-
-          reject()
-
-        }
-
-        const application = result.substring( idxSlash + 1, idxSemicolon )
-
-        return application
-
-      }
-
-      const extractBase64From = (result: string): string => {
-
-        const idxKomma = result.indexOf( ',' )
-
-        if (idxKomma === -1) {
-
-          reject()
-
-        }
-
-        const base64 = result.substr( idxKomma + 1 )
-
-        return base64
-
-      }
-
-      const reader = new FileReader()
-
-      const extractData = () => {
-
-        const result = reader.result as string
-
-        const application = extractApplicationFrom( result )
-
-        if ( application !== 'json' ) {
-
-          reject()
-
-        }
-
-        const base64 = extractBase64From( result )
-
-        try {
-
-          const json = JSON.parse( atob( base64 ) )
-
-          this.mGroups.next(json)
-
-          this.save().then( () => {
-
-            resolve()
-
-          }).catch ( error => {
-
-            reject(error)
-
-          })
-
-        } catch (error) {
-
-          reject(error)
-
-        }
-
-      }
-
-      reader.onload = extractData
-
-      reader.readAsDataURL(file)
-
-    })
+    return this.save()
 
   }
 
@@ -325,6 +246,30 @@ export class GroupStorageService {
 
   get groups(): BehaviorSubject<Group[]> {
     return this.mGroups
+  }
+
+  get isEmpty(): boolean {
+
+    const groups = this.mGroups.value
+
+    if ( groups.length === 0 ) {
+      return true
+    }
+
+    if ( groups.length > 1 ) { // Maybe there is only the default value
+      return false
+    }
+
+    const defaultGroup = this.default()[0]
+
+    if ( groups[0].tiles.length === 0 &&
+         groups[0].name === defaultGroup.name &&
+         groups[0].settings.numberOfColumns === defaultGroup.settings.numberOfColumns) {
+      return true
+    }
+
+    return false
+
   }
 
 }
