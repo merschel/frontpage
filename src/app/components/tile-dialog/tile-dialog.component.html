@@ -45,13 +45,19 @@
 
   <mat-dialog-actions>
 
+    <button class = "removeButton" mat-icon-button (click)="onRemoveTile()" type="button">
+      <mat-icon svgIcon = "remove">
+        Löschen
+      </mat-icon>
+    </button>
+
     <button class = "noButton" mat-icon-button mat-dialog-close>
       <mat-icon svgIcon = "close">
         Abbrechen
       </mat-icon>
     </button>
 
-    <button class = "yesButton" mat-icon-button type = "submit">
+    <button class = "yesButton" mat-icon-button type="submit">
       <mat-icon svgIcon = "check">
         Ok
       </mat-icon>

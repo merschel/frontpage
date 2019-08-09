@@ -1,9 +1,11 @@
 import { Scheme } from './../../model/scheme'
 import { UrlService } from 'src/app/services/url.service'
 import { Component, OnInit, Inject } from '@angular/core'
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material'
 import { Tile } from '../../model/tile'
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms'
+import { YesNoDialogComponent, YesNoDialogInput } from './../yes-no-dialog/yes-no-dialog.component'
+import { GroupStorageService } from './../../services/group-storage.service'
 
 @Component({
   selector: 'app-tile-dialog',
@@ -45,7 +47,9 @@ export class TileDialogComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<TileDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public tile: Tile,
               private formBuilder: FormBuilder,
-              private urlService: UrlService) { }
+              private urlService: UrlService,
+              private dialog: MatDialog,
+              private groupStorage: GroupStorageService) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -90,6 +94,29 @@ export class TileDialogComponent implements OnInit {
       this.dialogRef.close()
 
     }
+
+  }
+
+  onRemoveTile() {
+
+    const yesNoDialogInput: YesNoDialogInput = {
+      question: 'Soll der Link ' + this.tile.url + ' gelöscht werden?',
+      title: 'Löschen'
+    }
+
+    const yesNoDialog = this.dialog.open( YesNoDialogComponent, { data: yesNoDialogInput} )
+
+    yesNoDialog.afterClosed().subscribe( result =>  {
+
+      if ( result ) {
+
+        this.groupStorage.remove(this.tile)
+
+        this.dialogRef.close()
+
+      }
+
+    })
 
   }
 

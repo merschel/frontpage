@@ -1,9 +1,13 @@
+.removeButton {
+  margin-right: auto;
+}
+
 .yesButton {
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .noButton {
-  margin-right: auto;
+  margin-left: auto;
 }
 
 .pictureUrl {
