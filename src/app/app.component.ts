@@ -62,6 +62,11 @@ export class AppComponent {
       sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/file-hidden.svg')
     )
 
+    this.matIconRegistry.addSvgIcon(
+      'tab',
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/tab.svg')
+    )
+
   }
 
 }

@@ -59,24 +59,17 @@ export class TileComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  onRemoveTile() {
+  onOpenLinkInTab(tab: string) {
 
-    const yesNoDialogInput: YesNoDialogInput = {
-      question: 'Soll der Link ' + this.tile.url + ' gelöscht werden?',
-      title: 'Löschen'
+    if ( this.tile.alwaysOpenInNewTab ) {
+
+      window.open(this.mHref, '_blank')
+
+    } else {
+
+      window.open(this.mHref, tab)
+
     }
-
-    const dialogRef = this.dialog.open( YesNoDialogComponent, { data: yesNoDialogInput} )
-
-    dialogRef.afterClosed().subscribe( result =>  {
-
-      if ( result ) {
-
-        this.groupStorage.remove(this.tile)
-
-      }
-
-    })
 
   }
 

@@ -1,7 +1,7 @@
 
 <mat-card fxLayout="row" class="tile" fxLayoutAlign="start">
 
-  <a mat-button [href]="mHref" flFlex="80%">
+  <a mat-button flFlex="80%" (click)="onOpenLinkInTab('_self')" >
     {{tile.text}}
   </a>
 
@@ -13,8 +13,8 @@
       </mat-icon>
     </button>
 
-    <button class="removeButton" mat-icon-button (click)="onRemoveTile()">
-      <mat-icon class="size-0_8" svgIcon = "remove">
+    <button class="tabButton" mat-icon-button (click)="onOpenLinkInTab('_blank')">
+      <mat-icon class="size-0_8" svgIcon = "tab">
         Entfernen
       </mat-icon>
     </button>

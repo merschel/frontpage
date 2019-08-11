@@ -59,7 +59,7 @@ constructor( private dialog: MatDialog,
 
   onAddTile() {
 
-    let empty: Tile = { url: '', text: '', scheme: Scheme.default }
+    let empty: Tile = { url: '', text: '', scheme: Scheme.default, alwaysOpenInNewTab: true }
 
     const dialogRef = this.dialog.open( TileDialogComponent, { data: empty } )
 

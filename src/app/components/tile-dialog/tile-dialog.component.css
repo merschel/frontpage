@@ -16,7 +16,7 @@
 }
 
 .url {
-  width: 334px;
+  width: 418px;
   margin-left: 16px;
 }
 
@@ -29,5 +29,9 @@
 }
 
 .headline {
-  width: 400px;
+  width: 500px;
+}
+
+.content {
+  height: 250px;
 }

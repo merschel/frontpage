@@ -3,4 +3,5 @@ export interface Tile {
   pictureUrl?: any
   text: string
   scheme: string
+  alwaysOpenInNewTab: boolean
 }

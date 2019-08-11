@@ -77,13 +77,11 @@ export class TileDialogComponent implements OnInit {
 
   onSubmit() {
 
-    this.tile.url = this.mForm.value.url
-
-    this.tile.text = this.mForm.value.text
-
-    this.tile.pictureUrl = this.mForm.value.pictureUrl
-
-    this.tile.scheme = this.mSchemeControl.value
+    this.tile.url                = this.mForm.value.url
+    this.tile.text               = this.mForm.value.text
+    this.tile.pictureUrl         = this.mForm.value.pictureUrl
+    this.tile.scheme             = this.mSchemeControl.value
+    this.tile.alwaysOpenInNewTab = this.mForm.value.alwaysOpenInNewTab
 
     if ( this.tile.url || this.tile.text ) {
 
@@ -136,9 +134,10 @@ export class TileDialogComponent implements OnInit {
 
       this.mForm = this.formBuilder.group({
 
-        pictureUrl: '',
-        url:        '',
-        text:       ''
+        pictureUrl:         '',
+        url:                '',
+        text:               '',
+        alwaysOpenInNewTab: true
 
       })
 
@@ -148,9 +147,10 @@ export class TileDialogComponent implements OnInit {
 
       this.mForm = this.formBuilder.group({
 
-        pictureUrl: this.tile.pictureUrl,
-        url:        this.tile.url,
-        text:       this.tile.text,
+        pictureUrl:         this.tile.pictureUrl,
+        url:                this.tile.url,
+        text:               this.tile.text,
+        alwaysOpenInNewTab: this.tile.alwaysOpenInNewTab
 
       })
 
