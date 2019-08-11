@@ -67,6 +67,11 @@ export class AppComponent {
       sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/tab.svg')
     )
 
+    this.matIconRegistry.addSvgIcon(
+      'pencil',
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/pencil.svg')
+    )
+
   }
 
 }
