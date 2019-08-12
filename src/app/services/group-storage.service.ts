@@ -1,8 +1,9 @@
-import { Tile } from './../model/tile'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
 import { Injectable } from '@angular/core'
 import { Group } from './../model/group'
 import { saveAs } from 'file-saver'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { Tile } from '../model/tile'
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class GroupStorageService {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor() {
+  constructor(private snackBar: MatSnackBar) {
 
     this.mGroups = new BehaviorSubject( this.default() )
 
@@ -77,7 +78,9 @@ export class GroupStorageService {
 
     this.save().then( () => {
 
-      // TODO give feedback
+      this.snackBar.open('Gespeichert', 'OK', {
+        duration: 5000,
+      })
 
     }).catch( error => {
 
@@ -91,7 +94,9 @@ export class GroupStorageService {
 
     this.save().then( () => {
 
-      // TODO give feedback
+      this.snackBar.open('Gespeichert', 'OK', {
+        duration: 5000,
+      })
 
     }).catch( error => {
 
@@ -135,7 +140,9 @@ export class GroupStorageService {
 
     this.save().then( () => {
 
-      // TODO feedback
+      this.snackBar.open('Gespeichert', 'OK', {
+        duration: 5000,
+      })
 
     }).catch( error => {
 

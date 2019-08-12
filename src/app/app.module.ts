@@ -22,6 +22,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 // Components
 import { AppComponent } from './app.component'
@@ -80,7 +81,8 @@ import { KeysPipe } from './pipes/keys'
     MatAutocompleteModule,
     MatSlideToggleModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   providers: [
     GroupStorageService,

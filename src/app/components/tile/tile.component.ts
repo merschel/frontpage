@@ -79,7 +79,11 @@ export class TileComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe( tile => {
 
-      this.groupStorage.onChange()
+      if ( tile ) {
+
+        this.groupStorage.onChange()
+
+      }
 
     })
 
