@@ -34,7 +34,11 @@ export class GroupStorageService {
 
     }).catch( error => {
 
-        // todo
+      this.snackBar.open(error.message, 'OK', {
+        duration: 5000,
+      })
+
+      console.error(error.message)
 
     })
 
@@ -84,7 +88,11 @@ export class GroupStorageService {
 
     }).catch( error => {
 
-      console.log(error) // TODO
+      this.snackBar.open(error.message, 'OK', {
+        duration: 5000,
+      })
+
+      console.error(error.message)
 
     })
 
@@ -100,7 +108,11 @@ export class GroupStorageService {
 
     }).catch( error => {
 
-      console.log(error) // TODO
+      this.snackBar.open(error.message, 'OK', {
+        duration: 5000,
+      })
+
+      console.error(error.message)
 
     })
 
@@ -146,7 +158,11 @@ export class GroupStorageService {
 
     }).catch( error => {
 
-      // TODO feedback
+      this.snackBar.open(error.message, 'OK', {
+        duration: 5000,
+      })
+
+      console.error(error.message)
 
     })
 
@@ -219,7 +235,7 @@ export class GroupStorageService {
 
         } else {
 
-          reject( new Error() ) // TODO
+          reject( new Error('Die Gruppen können nicht geladen werden.') )
 
         }
 

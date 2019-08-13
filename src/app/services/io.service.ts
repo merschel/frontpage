@@ -58,7 +58,7 @@ export class IoService {
 
       reader.onerror = () => {
 
-        reject()
+        reject(new Error('Konnte die Datei nicht lesen.'))
 
       }
 
@@ -75,7 +75,7 @@ export class IoService {
       const application = this.extractApplicationFrom( rawData )
 
       if ( application !== 'json' ) {
-        reject()
+        reject(new Error('Die Datei ist kein JSON Format.'))
       }
 
       const base64 = this.extractBase64From( rawData )

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core'
 import { GroupStorageService } from '../../services/group-storage.service'
 import { MatDialog, MatDialogRef } from '@angular/material'
 import { YesNoDialogComponent, YesNoDialogInput } from './../yes-no-dialog/yes-no-dialog.component'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-drop-zone-dialog',
@@ -41,7 +42,8 @@ export class DropZoneDialogComponent implements OnInit {
   constructor( private groupStorage: GroupStorageService,
                private io: IoService,
                private dialog: MatDialog,
-               private dialogRef: MatDialogRef<DropZoneDialogComponent> ) { }
+               private dialogRef: MatDialogRef<DropZoneDialogComponent>,
+               private snackBar: MatSnackBar ) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -67,7 +69,13 @@ export class DropZoneDialogComponent implements OnInit {
 
     if ( files.length > 1 ) {
 
-      // TODO Error
+      const error = new Error('Nicht mehr als eine Datei nutzten!')
+
+      this.snackBar.open(error.message, 'OK', {
+        duration: 5000,
+      })
+
+      console.error(error.message)
 
      } else {
 
@@ -81,11 +89,17 @@ export class DropZoneDialogComponent implements OnInit {
 
       }).then( () => {
 
-        // speichern erfolgreich TODO
+        this.snackBar.open('Gespeichert', 'OK', {
+          duration: 5000,
+        })
 
       }).catch( error => {
 
-        // TODO Error
+        this.snackBar.open(error.message, 'OK', {
+          duration: 5000,
+        })
+
+        console.error(error.message)
 
       })
 
