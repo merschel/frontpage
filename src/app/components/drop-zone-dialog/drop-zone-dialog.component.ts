@@ -85,13 +85,7 @@ export class DropZoneDialogComponent implements OnInit {
 
       }).then( groups => {
 
-        return this.handleImportOf(groups)
-
-      }).then( () => {
-
-        this.snackBar.open('Gespeichert', 'OK', {
-          duration: 5000,
-        })
+        this.handleImportOf(groups)
 
       }).catch( error => {
 
@@ -117,7 +111,25 @@ export class DropZoneDialogComponent implements OnInit {
 
     if ( this.groupStorage.isEmpty ) {
 
-      return this.groupStorage.import( groups )
+      return this.groupStorage.import( groups ).then( () => {
+
+        this.snackBar.open('Gespeichert', 'OK', {
+          duration: 5000,
+        })
+
+        this.dialogRef.close()
+
+      }).catch( error => {
+
+        this.snackBar.open(error.message, 'OK', {
+          duration: 5000,
+        })
+
+        console.error(error.message)
+
+        this.dialogRef.close()
+
+      })
 
     } else {
 
@@ -132,7 +144,25 @@ export class DropZoneDialogComponent implements OnInit {
 
         if ( result ) {
 
-          return this.groupStorage.import( groups )
+          return this.groupStorage.import( groups ).then( () => {
+
+            this.snackBar.open('Gespeichert', 'OK', {
+              duration: 5000,
+            })
+
+            this.dialogRef.close()
+
+          }).catch( error => {
+
+            this.snackBar.open(error.message, 'OK', {
+              duration: 5000,
+            })
+
+            console.error(error.message)
+
+            this.dialogRef.close()
+
+          })
 
         } else {
 
