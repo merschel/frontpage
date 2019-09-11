@@ -1,16 +1,16 @@
-import { YesNoDialogInput, YesNoDialogComponent } from './../yes-no-dialog/yes-no-dialog.component'
-import { Group } from './../../model/group'
 import { GroupStorageService } from './../../services/group-storage.service'
-import { Component, OnInit, ViewChild } from '@angular/core'
-import { MatTable } from '@angular/material'
-import { MatDialog } from '@angular/material'
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms'
+import { Group } from './../../model/group'
+import { Component, OnInit, Inject } from '@angular/core'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import { YesNoDialogInput, YesNoDialogComponent } from './../yes-no-dialog/yes-no-dialog.component'
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  selector: 'app-settings-dialog',
+  templateUrl: './settings-dialog.component.html',
+  styleUrls: ['./settings-dialog.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsDialogComponent implements OnInit {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -20,22 +20,17 @@ export class SettingsComponent implements OnInit {
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-  //   Output Variables    //
+          //   Output Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-  //   Member Variables    //
+          //   Member Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  @ViewChild(MatTable) mTable: MatTable<any>
-
-  mDisplayedColumns: string[] = ['name', 'numberOfColumns', 'action']
-
-  mNewName: string
-  mNewNumberOfColumns: number
+  mForm: FormGroup
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -43,8 +38,11 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  constructor( public groupStorage: GroupStorageService,
-               private dialog: MatDialog ) { }
+  constructor( public dialogRef: MatDialogRef<SettingsDialogComponent>,
+               @Inject(MAT_DIALOG_DATA) public group: Group,
+               private formBuilder: FormBuilder,
+               private dialog: MatDialog,
+               private groupStorage: GroupStorageService) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -54,7 +52,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.default()
+    this.setValues()
 
   }
 
@@ -64,27 +62,30 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  onAdd() {
+  onSubmit() {
 
-    const group: Group = {
-      name: this.mNewName,
+    let group = {
+      name:            this.mForm.value.name,
+      tiles:           this.group ? this.group.tiles : [],
       settings: {
-        numberOfColumns: this.mNewNumberOfColumns,
-      },
-      tiles: []
+        numberOfColumns: this.mForm.value.numberOfColumns
+      }
     }
 
-    this.groupStorage.add(group)
+    if ( this.group ) { // on change a group
+      this.group.name = this.mForm.value.name
+      this.group.settings.numberOfColumns = this.mForm.value.numberOfColumns
+    }
 
-    this.refreshTable()
+    this.dialogRef.close( group )
 
   }
 
-  onRemove( group: Group ) {
+  onRemoveGroup() {
 
     const yesNoDialogInput: YesNoDialogInput = {
 
-      question: 'Soll die Gruppe ' + group.name + ' gelöscht werden?',
+      question: 'Soll die Gruppe ' + this.group.name + ' gelöscht werden?',
       title: 'Löschen'
 
     }
@@ -95,19 +96,13 @@ export class SettingsComponent implements OnInit {
 
       if ( result ) {
 
-        this.groupStorage.remove( group )
+        this.groupStorage.remove( this.group )
 
-        this.refreshTable()
+        this.dialogRef.close( )
 
       }
 
     })
-
-  }
-
-  onChange() {
-
-    this.groupStorage.onChange()
 
   }
 
@@ -117,18 +112,27 @@ export class SettingsComponent implements OnInit {
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-  private refreshTable() {
+  private setValues() {
 
-    this.mTable.renderRows()
+    if ( this.group ) {
 
-    this.default()
+      this.mForm = this.formBuilder.group({
 
-  }
+        name:            this.group.name,
+        numberOfColumns: this.group.settings.numberOfColumns
 
-  private default() {
+      })
 
-    this.mNewName = ''
-    this.mNewNumberOfColumns = 5
+    } else {
+
+      this.mForm = this.formBuilder.group({
+
+        name:           'Neu',
+        numberOfColumns: 5
+
+      })
+
+    }
 
   }
 

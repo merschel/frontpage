@@ -1,0 +1,49 @@
+<form [formGroup] = "mForm" (ngSubmit) = "onSubmit()">
+
+  <h1 *ngIf='group; else headlineForNewGroup' mat-dialog-title class="headline"> Einstellungen für {{group?.name}} </h1>
+
+  <mat-divider></mat-divider>
+
+  <br>
+
+  <mat-dialog-content class="content">
+
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput appIntegerKeyOnly placeholder="Anzahl Spalten" type = "number" min = "1" max = "10" steps = "1" formControlName="numberOfColumns">
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+
+    <button *ngIf='group' class = "removeButton" mat-icon-button (click)="onRemoveGroup()" type="button">
+      <mat-icon svgIcon = "remove">
+        Löschen
+      </mat-icon>
+    </button>
+
+    <button class = "noButton" mat-icon-button mat-dialog-close>
+      <mat-icon svgIcon = "close">
+        Abbrechen
+      </mat-icon>
+    </button>
+
+    <button class = "yesButton" mat-icon-button type="submit">
+      <mat-icon svgIcon = "check">
+        Ok
+      </mat-icon>
+    </button>
+
+  </mat-dialog-actions>
+
+</form>
+
+<ng-template #headlineForNewGroup>
+  <h1 mat-dialog-title class="headline">
+    Neue Gruppe erstellen
+  </h1>
+</ng-template>

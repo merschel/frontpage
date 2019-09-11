@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core'
+import { SettingsDialogComponent } from './../settings-dialog/settings-dialog.component'
+import { Component, OnInit, Input } from '@angular/core'
 import { GroupStorageService } from './../../services/group-storage.service'
 import { MatDialog } from '@angular/material'
+import { Group } from './../../model/group'
 import { DropZoneDialogComponent } from './../drop-zone-dialog/drop-zone-dialog.component'
+
 @Component({
   selector: 'app-action-bar',
   templateUrl: './action-bar.component.html',
@@ -14,6 +17,8 @@ export class ActionBarComponent implements OnInit {
   //   Input Variables    //
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+  @Input() group: Group
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -59,6 +64,36 @@ export class ActionBarComponent implements OnInit {
   onImport() {
     console.log('Mo')
     let dialogRef = this.dialog.open(DropZoneDialogComponent)
+
+  }
+
+  onSettings() {
+
+    let dialogRef = this.dialog.open(SettingsDialogComponent, {
+      data: this.group
+    })
+
+    dialogRef.afterClosed().subscribe( group => {
+
+      if ( group ) {
+        this.groupStorage.onChange()
+      }
+
+    })
+
+  }
+
+  onAddGroup() {
+
+    let dialogRef = this.dialog.open( SettingsDialogComponent )
+
+    dialogRef.afterClosed().subscribe( group => {
+
+      if ( group ) {
+        this.groupStorage.add(group)
+      }
+
+    })
 
   }
 

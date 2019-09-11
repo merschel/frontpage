@@ -207,6 +207,8 @@ export class GroupStorageService {
 
       try {
 
+        console.log(this.mGroups.value)
+
         localStorage.setItem('groups', JSON.stringify( this.mGroups.value ))
 
         resolve()

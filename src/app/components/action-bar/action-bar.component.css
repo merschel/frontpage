@@ -13,3 +13,13 @@
   position: absolute;
   right: 32px;
 }
+
+.settings-button {
+  position: absolute;
+  right: 64px;
+}
+
+.tab-plus-button {
+  position: absolute;
+  right: 96px;
+}

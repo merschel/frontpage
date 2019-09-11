@@ -35,6 +35,7 @@ import { ActionBarComponent } from './components/action-bar/action-bar.component
 import { TileDialogComponent } from './components/tile-dialog/tile-dialog.component'
 import { YesNoDialogComponent } from './components/yes-no-dialog/yes-no-dialog.component'
 import { DropZoneDialogComponent } from './components/drop-zone-dialog/drop-zone-dialog.component'
+import { SettingsDialogComponent } from './components/settings-dialog/settings-dialog.component'
 
 // Services
 import { GroupStorageService } from './services/group-storage.service'
@@ -45,6 +46,7 @@ import { DropZoneDirective } from './directives/drop-zone.directive'
 
 // Pipes
 import { KeysPipe } from './pipes/keys'
+
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { KeysPipe } from './pipes/keys'
     KeysPipe,
     ActionBarComponent,
     DropZoneDirective,
-    DropZoneDialogComponent
+    DropZoneDialogComponent,
+    SettingsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +93,8 @@ import { KeysPipe } from './pipes/keys'
   entryComponents: [
     TileDialogComponent,
     YesNoDialogComponent,
-    DropZoneDialogComponent
+    DropZoneDialogComponent,
+    SettingsDialogComponent
   ],
   bootstrap: [
     AppComponent
