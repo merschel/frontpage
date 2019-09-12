@@ -16,10 +16,15 @@
 
 .settings-button {
   position: absolute;
-  right: 64px;
+  right: 80px;
 }
 
 .tab-plus-button {
   position: absolute;
-  right: 96px;
+  right: 112px;
+}
+
+.expand-all-button {
+  position: absolute;
+  right: 160px;
 }

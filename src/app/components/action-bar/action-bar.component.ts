@@ -97,6 +97,14 @@ export class ActionBarComponent implements OnInit {
 
   }
 
+  onOpenAll() {
+
+    this.group.tiles.forEach( tile => {
+      window.open( tile.scheme + '//' + tile.url, '_blank')
+    })
+
+  }
+
   //////////////////////////////////////////////
   //////////////////////////////////////////////
   //   Private Functions    //

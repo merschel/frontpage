@@ -1,6 +1,12 @@
 
 <div class="action-bar">
 
+  <button class="expand-all-button" mat-icon-button (click)="onOpenAll()">
+
+    <mat-icon svgIcon="expand-all"></mat-icon>
+
+  </button>
+
   <button class="tab-plus-button" mat-icon-button (click)="onAddGroup()">
 
     <mat-icon svgIcon="tab-plus"></mat-icon>
@@ -12,8 +18,6 @@
     <mat-icon svgIcon="settings"></mat-icon>
 
   </button>
-
-  <mat-divider vertical="true"></mat-divider>
 
   <button class="export-button" mat-icon-button (click)="onExport()">
 

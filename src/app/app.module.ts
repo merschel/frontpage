@@ -29,7 +29,6 @@ import { AppComponent } from './app.component'
 import { MainComponent } from './components/main/main.component'
 import { TileComponent } from './components/tile/tile.component'
 import { GroupComponent } from './components/group/group.component'
-import { SettingsComponent } from './components/settings/settings.component'
 import { TilePlusComponent } from './components/tile-plus/tile-plus.component'
 import { ActionBarComponent } from './components/action-bar/action-bar.component'
 import { TileDialogComponent } from './components/tile-dialog/tile-dialog.component'
@@ -54,7 +53,6 @@ import { KeysPipe } from './pipes/keys'
     MainComponent,
     TileComponent,
     GroupComponent,
-    SettingsComponent,
     TileDialogComponent,
     TilePlusComponent,
     IntegerKeyOnlyDirective,

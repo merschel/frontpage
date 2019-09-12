@@ -77,6 +77,12 @@ export class AppComponent {
       sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/tab-plus.svg')
     )
 
+    this.matIconRegistry.addSvgIcon(
+      'expand-all',
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/expand-all.svg')
+    )
+
+
   }
 
 }
