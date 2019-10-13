@@ -57,14 +57,11 @@ export class ActionBarComponent implements OnInit {
   //////////////////////////////////////////////
 
   onExport() {
-    console.log('Di')
     this.groupStorage.export()
   }
 
   onImport() {
-    console.log('Mo')
-    let dialogRef = this.dialog.open(DropZoneDialogComponent)
-
+    this.dialog.open(DropZoneDialogComponent)
   }
 
   onSettings() {

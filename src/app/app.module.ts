@@ -23,6 +23,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 // Components
 import { AppComponent } from './app.component'
@@ -83,7 +84,8 @@ import { KeysPipe } from './pipes/keys'
     MatSlideToggleModule,
     MatDividerModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   providers: [
     GroupStorageService,
