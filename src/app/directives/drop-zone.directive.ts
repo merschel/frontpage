@@ -55,7 +55,6 @@ export class DropZoneDirective {
     event.preventDefault()
     this.active = true
     this.hovered.emit(this.active)
-    console.log('hallop')
   }
 
   @HostListener('dragleave', ['$event'])

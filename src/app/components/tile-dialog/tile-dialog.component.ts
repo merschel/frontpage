@@ -37,6 +37,7 @@ export class TileDialogComponent implements OnInit {
   mSchemeControl: FormControl
   mSchemes = Scheme
   mHeadline: string
+  mIsNewTile: Boolean
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -59,11 +60,13 @@ export class TileDialogComponent implements OnInit {
 
   ngOnInit() {
 
-    this.mHeadline = this.tile.url === '' ? 'Link Hinzufügen' : 'Einstellungen'
+    this.mIsNewTile = this.tile.url === ''
+
+    this.mHeadline = this.mIsNewTile ? 'Link Hinzufügen' : 'Einstellungen'
 
     this.setValues()
 
-    if ( this.tile.url === '' ) {
+    if ( this.mIsNewTile ) {
       this.onPictureUrlChange()
     }
 
@@ -128,9 +131,11 @@ export class TileDialogComponent implements OnInit {
 
     this.mSchemeControl = new FormControl()
 
-    if ( this.tile.url === '' ) {
+    if ( this.mIsNewTile ) {
 
       this.mSchemeControl.setValue( Scheme.default )
+
+      //this.mForm.controls['pictureUrl'].disable()
 
       this.mForm = this.formBuilder.group({
 

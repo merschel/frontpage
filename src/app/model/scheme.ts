@@ -1,5 +1,5 @@
 export enum Scheme {
-  default = 'http:',
+  default = 'https:',
   http  = 'http:',
   https = 'https:'
 }

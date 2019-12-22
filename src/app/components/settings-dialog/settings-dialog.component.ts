@@ -42,7 +42,7 @@ export class SettingsDialogComponent implements OnInit {
                @Inject(MAT_DIALOG_DATA) public group: Group,
                private formBuilder: FormBuilder,
                private dialog: MatDialog,
-               private groupStorage: GroupStorageService) { }
+               public groupStorage: GroupStorageService) { }
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
@@ -97,6 +97,12 @@ export class SettingsDialogComponent implements OnInit {
       if ( result ) {
 
         this.groupStorage.remove( this.group )
+
+        if ( this.groupStorage.isEmpty ) {
+
+          this.groupStorage.addDefaultGroup()
+
+        }
 
         this.dialogRef.close( )
 

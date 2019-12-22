@@ -98,6 +98,10 @@ export class GroupStorageService {
 
   }
 
+  addDefaultGroup(): void {
+    this.add(this.default()[0])
+  }
+
   onChange() {
 
     this.save().then( () => {
@@ -206,8 +210,6 @@ export class GroupStorageService {
     return new Promise( (resolve, reject) => {
 
       try {
-
-        console.log(this.mGroups.value)
 
         localStorage.setItem('groups', JSON.stringify( this.mGroups.value ))
 

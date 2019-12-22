@@ -14,72 +14,72 @@ export class AppComponent {
 
     this.matIconRegistry.addSvgIcon(
       'check',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/check.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/check.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'remove',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/delete.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'close',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/close.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/close.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'export',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/package-up.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/package-up.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'plus',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/plus.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/plus.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'settings',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/settings.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/settings.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'tune',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/tune.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/tune.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'import',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/package-down.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/package-down.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'file',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/file.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/file.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'file-hidden',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/file-hidden.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/file-hidden.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'tab',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/tab.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/tab.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'pencil',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/pencil.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/pencil.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'tab-plus',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/tab-plus.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/tab-plus.svg')
     )
 
     this.matIconRegistry.addSvgIcon(
       'expand-all',
-      sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/expand-all.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/expand-all.svg')
     )
 
 

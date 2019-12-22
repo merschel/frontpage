@@ -50,8 +50,7 @@
   <mat-divider></mat-divider>
 
   <mat-dialog-actions>
-
-    <button class = "removeButton" mat-icon-button (click)="onRemoveTile()" type="button">
+    <button *ngIf='!mIsNewTile' class = "removeButton" mat-icon-button (click)="onRemoveTile()" type="button">
       <mat-icon svgIcon = "remove">
         Löschen
       </mat-icon>
